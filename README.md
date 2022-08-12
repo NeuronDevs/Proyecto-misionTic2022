@@ -1,6 +1,6 @@
 # Proyecto-misionTic2022
 
 
-### Interantes:
+### Integrantes:
 
 - Luis Olivares Puello
