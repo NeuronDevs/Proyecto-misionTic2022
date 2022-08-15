@@ -4,3 +4,4 @@
 ### Integrantes:
 
 - Luis Olivares Puello
+- Paula Andrea Cortés Rojas
