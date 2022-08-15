@@ -5,3 +5,4 @@
 
 - Luis Olivares Puello
 - Paula Andrea Cortés Rojas
+- Jessica Andrea Lopez Obando
