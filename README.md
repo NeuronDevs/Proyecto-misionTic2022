@@ -4,3 +4,4 @@
 ### Integrantes:
 
 - Luis Olivares Puello
+- Jessica Andrea Lopez Obando
