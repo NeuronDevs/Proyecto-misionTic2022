@@ -7,4 +7,4 @@
 - Paula Andrea Cortés Rojas
 - Jessica Andrea Lopez Obando
 - Walter Yesid Mejía Chimá
-- Sergio Quintero
+- Sergio Alejandro Quintero Puentes
