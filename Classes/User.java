@@ -12,11 +12,11 @@ public class User {
     private Profile profile;
     private Enum_RoleName role;
     private Enterprise enterprise;
-    private ArrayList<Transactions> transactions = new ArrayList<Transactions>();
+    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private Date createdAt;
 
     public User(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
-            ArrayList<Transactions> transactions, Date createdAt) {
+            ArrayList<Transaction> transactions, Date createdAt) {
         this.id = id;
         this.email = email;
         this.profile = profile;
