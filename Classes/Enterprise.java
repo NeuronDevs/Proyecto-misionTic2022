@@ -8,12 +8,13 @@ public class Enterprise {
     private String document;
     private String phone;
     private String address;
-    private ArrayList<User> users = new ArrayList<User>();
+    private ArrayList<Employee> users = new ArrayList<Employee>();
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private Date createdAt;
     private Date updatedAt;
 
-    public Enterprise(Long id, String name, String document, String phone, String address, ArrayList<User> users, ArrayList<Transaction> transactions, Date createdAt, Date updatedAt) {
+    public Enterprise(Long id, String name, String document, String phone, String address, ArrayList<Employee> users,
+            ArrayList<Transaction> transactions, Date createdAt, Date updatedAt) {
         this.setId(id);
         this.setName(name);
         this.setDocument(document);
@@ -68,11 +69,11 @@ public class Enterprise {
         this.address = address;
     }
 
-    public ArrayList<User> getUsers() {
+    public ArrayList<Employee> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
+    public void setUsers(ArrayList<Employee> users) {
         this.users = users;
     }
 
@@ -100,4 +101,3 @@ public class Enterprise {
         this.updatedAt = updatedAt;
     }
 }
-

@@ -4,11 +4,11 @@ public class Profile {
     private String id;
     private String imagen;
     private String phone;
-    private User user;
+    private Employee user;
     private Date createdAt;
     private Date updateAt;
 
-    public Profile(String id, String imagen, String phone, User user, Date createdAt, Date updateAt) {
+    public Profile(String id, String imagen, String phone, Employee user, Date createdAt, Date updateAt) {
         this.id = id;
         this.imagen = imagen;
         this.phone = phone;
@@ -44,11 +44,11 @@ public class Profile {
         this.phone = phone;
     }
 
-    public User getUser() {
+    public Employee getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Employee user) {
         this.user = user;
     }
 

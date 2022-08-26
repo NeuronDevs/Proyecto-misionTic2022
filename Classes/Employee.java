@@ -6,7 +6,7 @@ enum Enum_RoleName {
     Operario
 }
 
-public class User {
+public class Employee {
     private long id;
     private String email;
     private Profile profile;
@@ -15,7 +15,7 @@ public class User {
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private Date createdAt;
 
-    public User(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
+    public Employee(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
             ArrayList<Transaction> transactions, Date createdAt) {
         this.id = id;
         this.email = email;
@@ -26,7 +26,7 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public User() {
+    public Employee() {
     }
 
     public long getId() {
