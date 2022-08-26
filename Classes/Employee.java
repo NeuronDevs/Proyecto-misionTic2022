@@ -1,12 +1,8 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-enum Enum_RoleName {
-    Admin,
-    Operario
-}
 
-public class User {
+public class Employee {
     private long id;
     private String email;
     private Profile profile;
@@ -15,7 +11,7 @@ public class User {
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private Date createdAt;
 
-    public User(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
+    public Employee(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
             ArrayList<Transaction> transactions, Date createdAt) {
         this.id = id;
         this.email = email;
@@ -26,7 +22,7 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public User() {
+    public Employee() {
     }
 
     public long getId() {
@@ -69,11 +65,11 @@ public class User {
         this.enterprise = enterprise;
     }
 
-    public ArrayList<Transactions> getTransactions() {
+    public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(ArrayList<Transactions> transactions) {
+    public void setTransactions(ArrayList<Transaction> transactions) {
         this.transactions = transactions;
     }
 
