@@ -44,5 +44,3 @@ Git clone https://github.com/NeuronDevs/Proyecto-misionTic2022.git
 
  _<center>NeuronDevs/Des. Software Grupo 9 - Copyright© 2022.</center>_
 
-
-
