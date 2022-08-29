@@ -1,3 +1,5 @@
+package com.NeuronDevs.GestionFinanciera.Classes;
+
 import java.util.ArrayList;
 import java.util.Date;
 

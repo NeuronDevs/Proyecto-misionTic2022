@@ -1,3 +1,4 @@
+package com.NeuronDevs.GestionFinanciera.Classes;
 import java.util.Date;
 
 public class Profile {

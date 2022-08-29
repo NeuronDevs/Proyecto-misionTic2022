@@ -1,3 +1,4 @@
+package com.NeuronDevs.GestionFinanciera.Classes;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ public class Employee {
     private Date createdAt;
 
     public Employee(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
-            ArrayList<Transaction> transactions, Date createdAt) {
+                    ArrayList<Transaction> transactions, Date createdAt) {
         this.id = id;
         this.email = email;
         this.profile = profile;
