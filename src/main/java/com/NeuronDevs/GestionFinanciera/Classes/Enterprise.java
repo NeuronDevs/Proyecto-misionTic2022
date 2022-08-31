@@ -10,12 +10,12 @@ public class Enterprise {
     private String document;
     private String phone;
     private String address;
-    private ArrayList<Employee> users = new ArrayList<Employee>();
+    private ArrayList<User> users = new ArrayList<User>();
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private Date createdAt;
     private Date updatedAt;
 
-    public Enterprise(Long id, String name, String document, String phone, String address, ArrayList<Employee> users,
+    public Enterprise(Long id, String name, String document, String phone, String address, ArrayList<User> users,
             ArrayList<Transaction> transactions, Date createdAt, Date updatedAt) {
         this.setId(id);
         this.setName(name);
@@ -71,11 +71,11 @@ public class Enterprise {
         this.address = address;
     }
 
-    public ArrayList<Employee> getUsers() {
+    public ArrayList<User> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<Employee> users) {
+    public void setUsers(ArrayList<User> users) {
         this.users = users;
     }
 

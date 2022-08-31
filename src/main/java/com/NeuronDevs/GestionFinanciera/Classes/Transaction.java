@@ -6,7 +6,7 @@ public class Transaction {
     private long id;
     private String concept;
     private float amount;
-    private Employee user;
+    private User user;
     private Enterprise enterprise;
     private Date createAt;
     private Date updateAt;
@@ -15,8 +15,8 @@ public class Transaction {
 
     }
 
-    public Transaction(long id, String concept, float amount, Employee user, Enterprise enterprise, Date createAt,
-            Date updateAt) {
+    public Transaction(long id, String concept, float amount, User user, Enterprise enterprise, Date createAt,
+                       Date updateAt) {
         this.id = id;
         this.concept = concept;
         this.amount = amount;
@@ -50,11 +50,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Employee getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Employee user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

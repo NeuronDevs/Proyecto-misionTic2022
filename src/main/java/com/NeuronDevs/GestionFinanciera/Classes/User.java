@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Employee {
+public class User {
     private long id;
     private String email;
     private Profile profile;
@@ -12,8 +12,8 @@ public class Employee {
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private Date createdAt;
 
-    public Employee(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
-                    ArrayList<Transaction> transactions, Date createdAt) {
+    public User(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
+                ArrayList<Transaction> transactions, Date createdAt) {
         this.id = id;
         this.email = email;
         this.profile = profile;
@@ -23,7 +23,7 @@ public class Employee {
         this.createdAt = createdAt;
     }
 
-    public Employee() {
+    public User() {
     }
 
     public long getId() {
