@@ -1,4 +1,4 @@
-package com.NeuronDevs.GestionFinanciera.Classes;
+package com.NeuronDevs.GestionFinanciera.Entities;
 import java.util.Date;
 
 public class Transaction {

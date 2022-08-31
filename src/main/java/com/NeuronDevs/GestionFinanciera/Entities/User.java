@@ -1,9 +1,9 @@
-package com.NeuronDevs.GestionFinanciera.Classes;
+package com.NeuronDevs.GestionFinanciera.Entities;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public class User {
+public class User    {
     private long id;
     private String email;
     private Profile profile;
@@ -21,6 +21,11 @@ public class User {
         this.enterprise = enterprise;
         this.transactions = transactions;
         this.createdAt = createdAt;
+    }
+
+    public User(long id, String email) {
+        this.id = id;
+        this.email = email;
     }
 
     public User() {

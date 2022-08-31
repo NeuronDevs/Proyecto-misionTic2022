@@ -1,10 +1,9 @@
-package com.NeuronDevs.GestionFinanciera.Classes;
+package com.NeuronDevs.GestionFinanciera.Entities;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Enterprise {
-
     private Long id;
     private String name;
     private String document;
@@ -15,15 +14,12 @@ public class Enterprise {
     private Date createdAt;
     private Date updatedAt;
 
-    public Enterprise(Long id, String name, String document, String phone, String address, ArrayList<User> users,
-            ArrayList<Transaction> transactions, Date createdAt, Date updatedAt) {
+    public Enterprise(Long id, String name, String document, String phone, String address, Date createdAt, Date updatedAt) {
         this.setId(id);
         this.setName(name);
         this.setDocument(document);
         this.setPhone(phone);
         this.setAddress(address);
-        this.setUsers(users);
-        this.setTransactions(transactions);
         this.setCreatedAt(createdAt);
         this.setUpdatedAt(updatedAt);
     }
