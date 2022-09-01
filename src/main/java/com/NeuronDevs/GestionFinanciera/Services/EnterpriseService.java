@@ -12,4 +12,8 @@ public class EnterpriseService {
        return "Se ha agregado la empresa correctamente";
     }
 
+    public ArrayList<Enterprise> consultarEnterprise(){
+        return enterpriseList;
+    }
+
 }
