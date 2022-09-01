@@ -3,16 +3,20 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+@Entity
+@Table(name = "users")
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    @Column
     private String email;
     //private Profile profile;
+    @Column
     private Enum_RoleName role;
     //private Enterprise enterprise;
     //private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    @Column
     private Date createdAt;
 
     /*public User(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
