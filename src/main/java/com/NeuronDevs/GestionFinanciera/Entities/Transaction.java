@@ -1,8 +1,8 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
+import javax.persistence.*;
 import java.util.Date;
 
 public class Transaction {
-
     private long id;
     private String concept;
     private float amount;

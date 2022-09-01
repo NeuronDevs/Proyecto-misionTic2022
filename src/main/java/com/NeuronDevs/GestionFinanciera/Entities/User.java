@@ -1,18 +1,21 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
 
-public class User    {
+public class User {
+
     private long id;
+
     private String email;
-    private Profile profile;
+    //private Profile profile;
     private Enum_RoleName role;
-    private Enterprise enterprise;
-    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    //private Enterprise enterprise;
+    //private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private Date createdAt;
 
-    public User(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
+    /*public User(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
                 ArrayList<Transaction> transactions, Date createdAt) {
         this.id = id;
         this.email = email;
@@ -20,6 +23,13 @@ public class User    {
         this.role = role;
         this.enterprise = enterprise;
         this.transactions = transactions;
+        this.createdAt = createdAt;
+    }*/
+
+    public User(long id, String email, Enum_RoleName role, Date createdAt) {
+        this.id = id;
+        this.email = email;
+        this.role = role;
         this.createdAt = createdAt;
     }
 
@@ -47,13 +57,7 @@ public class User    {
         this.email = email;
     }
 
-    public Profile getProfile() {
-        return profile;
-    }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
 
     public Enum_RoleName getRole() {
         return role;
@@ -63,6 +67,15 @@ public class User    {
         this.role = role;
     }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    /*
     public Enterprise getEnterprise() {
         return enterprise;
     }
@@ -79,11 +92,11 @@ public class User    {
         this.transactions = transactions;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }*/
 }

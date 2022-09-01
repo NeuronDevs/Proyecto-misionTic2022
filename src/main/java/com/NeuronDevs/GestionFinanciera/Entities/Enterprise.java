@@ -1,5 +1,6 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
