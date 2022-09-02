@@ -1,18 +1,37 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
-
+@Entity
+@Table(name = "enterprise")
+@Data
 public class Enterprise {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column (unique = true)
     private String name;
+
+    @Column (unique = true)
     private String document;
+    @Column
     private String phone;
+    @Column
     private String address;
-    private ArrayList<User> users = new ArrayList<User>();
-    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+
+
+    //@OneToMany(mappedBy="enterprise")
+    //private ArrayList<User> users = new ArrayList<User>();
+
+    //@OneToMany(mappedBy="enterprise")
+    //private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    @Column
     private Date createdAt;
+    @Column
     private Date updatedAt;
 
     public Enterprise(Long id, String name, String document, String phone, String address, Date createdAt, Date updatedAt) {
@@ -26,77 +45,5 @@ public class Enterprise {
     }
 
     public Enterprise() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public void setDocument(String document) {
-        this.document = document;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
-    }
-
-    public ArrayList<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(ArrayList<Transaction> transactions) {
-        this.transactions = transactions;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/transactions")
 public class TransactionController {
 
-    @GetMapping("")
+    @GetMapping("/Prueba")
     public String getTransactions(){
         return "you want to get all transactions";
     }
@@ -17,10 +17,9 @@ public class TransactionController {
     }
 
     @GetMapping("/{id}")
-    public String getTransaction(@PathVariable Long id){
-        return "you want to get a transaction";
+    public Long getTransaction(@PathVariable Long id){
+       return id;
     }
-
     @PatchMapping("/{id}")
     public String updateTransaction(@PathVariable Long id){
         return "you want to update a transaction";

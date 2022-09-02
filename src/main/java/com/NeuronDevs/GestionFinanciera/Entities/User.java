@@ -14,6 +14,8 @@ public class User {
     //private Profile profile;
     @Column
     private Enum_RoleName role;
+    //@ManyToOne
+    //@JoinColumn(name="enterprise_id", nullable=false)
     //private Enterprise enterprise;
     //private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     @Column
