@@ -33,13 +33,13 @@ public class EnterpriseController {
         return "Haz creado una empresa";
     }
 
-    @PatchMapping("")
-    public String updateEnterprise(){
+    @PatchMapping("/{id}")
+    public String updateEnterprise(@PathVariable Long id){
         return "Este es un controlador para generar empresas";
     }
 
-    @DeleteMapping("")
-    public String deleteEnterprise(){
+    @DeleteMapping("/{id}")
+    public String deleteEnterprise(@PathVariable Long id){
         return "Este es un controlador para generar empresas";
     }
 
