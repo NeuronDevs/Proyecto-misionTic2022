@@ -1,11 +1,17 @@
 package com.NeuronDevs.GestionFinanciera.Services;
 
 import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+@Service
 public class EnterpriseService {
-    private ArrayList<Enterprise> enterpriseList = new ArrayList<Enterprise>();
+    private final ArrayList<Enterprise> enterpriseList;
+
+    public EnterpriseService(ArrayList<Enterprise> enterpriseList) {
+        this.enterpriseList = enterpriseList;
+    }
 
     public String newEnterprise(Enterprise enterprise){
        enterpriseList.add(enterprise);
