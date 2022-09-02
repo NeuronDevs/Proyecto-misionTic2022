@@ -3,8 +3,9 @@ package com.NeuronDevs.GestionFinanciera.Entities;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Table(name = "enterprise")
 @Data
@@ -23,9 +24,8 @@ public class Enterprise {
     @Column
     private String address;
 
-
-    //@OneToMany(mappedBy="enterprise")
-    //private ArrayList<User> users = new ArrayList<User>();
+    @OneToMany(mappedBy="enterprise")
+    private List<User> users;
 
     //@OneToMany(mappedBy="enterprise")
     //private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
