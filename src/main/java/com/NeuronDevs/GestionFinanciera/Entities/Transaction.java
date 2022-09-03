@@ -1,4 +1,5 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Transaction {
     private User user;
     @ManyToOne
     @JoinColumn(name="enterprise_id", nullable=false)
+    @JsonBackReference
     private Enterprise enterprise;
     @Column
     private Date createAt;

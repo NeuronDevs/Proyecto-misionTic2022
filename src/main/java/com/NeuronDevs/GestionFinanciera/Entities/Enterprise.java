@@ -1,5 +1,7 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,9 +27,11 @@ public class Enterprise {
     private String address;
 
     @OneToMany(mappedBy="enterprise")
+    @JsonIgnore
     private List<User> users;
 
     @OneToMany(mappedBy="enterprise")
+    @JsonIgnore
     private List<Transaction> transactions;
 
     @Column

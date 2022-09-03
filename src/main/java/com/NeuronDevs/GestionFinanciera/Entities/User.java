@@ -1,4 +1,6 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,7 +15,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column
+    @Column(unique = true)
     private String email;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
@@ -22,10 +24,11 @@ public class User {
     @Column
     private Enum_RoleName role;
     @ManyToOne
-    @JoinColumn(name="enterprise_id", nullable=false)
+    @JoinColumn(name="enterprise_id")
     private Enterprise enterprise;
 
     @OneToMany(mappedBy="user")
+    @JsonIgnore
     private List<Transaction> transactions;
     @Column
     private Date createdAt;

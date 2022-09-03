@@ -1,4 +1,6 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,7 +12,7 @@ import java.util.Date;
 public class Profile {
     @Id
     @Column(name = "user_id")
-    private Long id;
+    private Long user_id;
     @Column
     private String imagen;
     @Column
@@ -18,19 +20,16 @@ public class Profile {
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
     @Column
     private Date createdAt;
     @Column
     private Date updateAt;
 
-    public Profile(Long id, String imagen, String phone, User user, Date createdAt, Date updateAt) {
-        this.id = id;
-        this.imagen = imagen;
-        this.phone = phone;
-        this.user = user;
+    public Profile(Long user_id, Date createdAt) {
+        this.user_id = user_id;
         this.createdAt = createdAt;
-        this.updateAt = updateAt;
     }
 
     public Profile() {
