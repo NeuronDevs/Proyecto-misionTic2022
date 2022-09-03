@@ -1,14 +1,30 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
+@Entity
+@Table(name = "transaction")
+@Data
 public class Transaction {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column (unique = true)
     private String concept;
+    @Column
     private float amount;
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
     private User user;
+    @ManyToOne
+    @JoinColumn(name="enterprise_id", nullable=false)
     private Enterprise enterprise;
+    @Column
     private Date createAt;
+    @Column
     private Date updateAt;
 
     public Transaction() {
@@ -23,62 +39,6 @@ public class Transaction {
         this.user = user;
         this.enterprise = enterprise;
         this.createAt = createAt;
-        this.updateAt = updateAt;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getConcept() {
-        return concept;
-    }
-
-    public void setConcept(String concept) {
-        this.concept = concept;
-    }
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Enterprise getEnterprise() {
-        return enterprise;
-    }
-
-    public void setEnterprise(Enterprise enterprise) {
-        this.enterprise = enterprise;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
 
