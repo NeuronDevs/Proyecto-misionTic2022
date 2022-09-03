@@ -12,7 +12,7 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column (unique = true)
+    @Column
     private String concept;
     @Column
     private float amount;
