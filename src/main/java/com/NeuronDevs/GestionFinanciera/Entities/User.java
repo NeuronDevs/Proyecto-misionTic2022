@@ -4,6 +4,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,7 +25,8 @@ public class User {
     @JoinColumn(name="enterprise_id", nullable=false)
     private Enterprise enterprise;
 
-    //private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    @OneToMany(mappedBy="user")
+    private List<Transaction> transactions;
     @Column
     private Date createdAt;
 

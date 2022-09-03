@@ -27,8 +27,9 @@ public class Enterprise {
     @OneToMany(mappedBy="enterprise")
     private List<User> users;
 
-    //@OneToMany(mappedBy="enterprise")
-    //private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    @OneToMany(mappedBy="enterprise")
+    private List<Transaction> transactions;
+
     @Column
     private Date createdAt;
     @Column
