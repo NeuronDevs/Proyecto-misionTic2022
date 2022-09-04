@@ -34,17 +34,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUser(@PathVariable Long id) {
+    public Optional<User> getUser(@PathVariable Long id) throws Exception {
         return this.userService.getUser(id);
     }
 
     @PatchMapping("/{id}")
-    public String updateUser(@PathVariable Long id,@RequestBody User user) {
-        return "you want to update a user";
+    public User updateUser(@PathVariable Long id, @RequestBody User user) throws Exception {
+        return this.userService.updateUser(user,id);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable Long id) {
+    public String deleteUser(@PathVariable Long id) throws Exception {
         return this.userService.DeleteUser(id);
     }
 }

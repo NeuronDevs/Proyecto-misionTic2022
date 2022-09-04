@@ -35,4 +35,9 @@ public class Profile {
     public Profile() {
     }
 
+    public void setProfile(Long user_id, User user, Date createdAt) {
+        this.user_id = user_id;
+        this.user = user;
+        this.createdAt = createdAt;
+    }
 }

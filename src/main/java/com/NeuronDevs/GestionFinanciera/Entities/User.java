@@ -33,30 +33,14 @@ public class User {
     @Column
     private Date createdAt;
 
-    /*public User(long id, String email, Profile profile, Enum_RoleName role, Enterprise enterprise,
-                ArrayList<Transaction> transactions, Date createdAt) {
-        this.id = id;
+    public User() {
+    }
+
+    public void setUser( String email, Profile profile, Enum_RoleName role, Enterprise enterprise) {
         this.email = email;
         this.profile = profile;
         this.role = role;
         this.enterprise = enterprise;
-        this.transactions = transactions;
-        this.createdAt = createdAt;
-    }*/
-
-    public User(long id, String email, Enum_RoleName role, Date createdAt) {
-        this.id = id;
-        this.email = email;
-        this.role = role;
-        this.createdAt = createdAt;
-    }
-
-    public User(long id, String email) {
-        this.id = id;
-        this.email = email;
-    }
-
-    public User() {
     }
 
 }

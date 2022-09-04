@@ -4,27 +4,27 @@ package com.NeuronDevs.GestionFinanciera.Controllers;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/enterprises")
 public class TransactionController {
 
-    @GetMapping("/Prueba")
+    @GetMapping("/")
     public String getTransactions(){
         return "you want to get all transactions";
     }
-    @PostMapping("")
-    public String postTransaction(){
+    @PostMapping("/{id}/movements")
+    public String postTransaction(@PathVariable Long id){
         return "you want to post a transaction";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/movements")
     public Long getTransaction(@PathVariable Long id){
        return id;
     }
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/movements")
     public String updateTransaction(@PathVariable Long id){
         return "you want to update a transaction";
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}/movements")
     public String deleteTransaction(@PathVariable Long id){
         return "you want to delete a transaction";
     }
