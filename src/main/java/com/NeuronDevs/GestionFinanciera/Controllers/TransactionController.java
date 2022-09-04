@@ -11,21 +11,21 @@ public class TransactionController {
     public String getTransactions(){
         return "you want to get all transactions";
     }
-    @PostMapping("/{id}/movements")
-    public String postTransaction(@PathVariable Long id){
+    @PostMapping("/{id_enterprise}/movements")
+    public String postTransaction(@PathVariable Long id_enterprise){
         return "you want to post a transaction";
     }
 
-    @GetMapping("/{id}/movements")
-    public Long getTransaction(@PathVariable Long id){
-       return id;
+    @GetMapping("/{id_enterprise}/movements")
+    public Long getTransaction(@PathVariable Long id_enterprise){
+       return id_enterprise;
     }
-    @PatchMapping("/{id}/movements")
-    public String updateTransaction(@PathVariable Long id){
+    @PatchMapping("/{id_enterprise}/movements/{id_transaction}")
+    public String updateTransaction(@PathVariable Long id_enterprise, @PathVariable Long id_transaction){
         return "you want to update a transaction";
     }
-    @DeleteMapping("/{id}/movements")
-    public String deleteTransaction(@PathVariable Long id){
+    @DeleteMapping("/{id_enterprise}/movements/{id_transaction}")
+    public String deleteTransaction(@PathVariable Long id_enterprise,  @PathVariable Long id_transaction){
         return "you want to delete a transaction";
     }
 }
