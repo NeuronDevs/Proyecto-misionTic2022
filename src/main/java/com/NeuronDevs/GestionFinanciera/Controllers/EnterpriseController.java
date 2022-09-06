@@ -4,7 +4,8 @@ import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
 import com.NeuronDevs.GestionFinanciera.Services.EnterpriseService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/enterprise")
@@ -17,14 +18,14 @@ public class EnterpriseController {
     }
 
     @GetMapping("")
-    public ArrayList<Enterprise> getEnterprises(){
+    public List<Enterprise> getEnterprises(){
        return this.enterpriseService.consultarEnterprise();
 
    }
 
-    @GetMapping("/{variable}")
-    public Long getEnterprise(@PathVariable Long variable){
-        return variable;
+    @GetMapping("/{id}")
+    public Optional<Enterprise> getEnterprise(@PathVariable Long id) throws Exception{
+        return this.enterpriseService.getEnterprise(id);
     }
 
     @PostMapping("")

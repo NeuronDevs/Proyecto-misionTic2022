@@ -1,25 +1,43 @@
 package com.NeuronDevs.GestionFinanciera.Services;
 
 import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
+import com.NeuronDevs.GestionFinanciera.Entities.User;
+import com.NeuronDevs.GestionFinanciera.Repositories.EnterpriseRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class EnterpriseService {
-    private final ArrayList<Enterprise> enterpriseList;
 
-    public EnterpriseService(ArrayList<Enterprise> enterpriseList) {
-        this.enterpriseList = enterpriseList;
+    private final EnterpriseRepository enterpriseRepository;
+
+    public Enterprise newEnterprise(Enterprise enterprise){
+        return this.enterpriseRepository.save(enterprise);
     }
 
-    public String newEnterprise(Enterprise enterprise){
-       enterpriseList.add(enterprise);
-       return "Se ha agregado la empresa correctamente";
+    public List<Enterprise> consultarEnterprise(){
+        return this.enterpriseRepository.findAll();
+
     }
 
-    public ArrayList<Enterprise> consultarEnterprise(){
-        return enterpriseList;
+    public Optional<Enterprise> getEnterprise(Long id) throws Exception{
+        Enterprise enterprise = this.enterpriseRepository.findById(id).orElseThrow(
+                () -> new Exception("Empresa no existe")
+        );
+        return Optional.ofNullable(enterprise);
+
     }
+
+    /*public Enterprise updateEnterprise(Enterprise new_enterprise, Long id) throws Exception{
+
+    }
+
+   public String DeleteEnterprise(Long id) throws Exception{
+
+    }*/
 
 }
