@@ -51,4 +51,12 @@ public class Enterprise {
 
     public Enterprise() {
     }
+
+    public void setEnterprise(String name, String document, String phone, String address, Date updatedAt) {
+        this.name = name;
+        this.document = document;
+        this.phone = phone;
+        this.address = address;
+        this.updatedAt = updatedAt;
+    }
 }

@@ -32,12 +32,20 @@ public class EnterpriseService {
 
     }
 
-    /*public Enterprise updateEnterprise(Enterprise new_enterprise, Long id) throws Exception{
+    public Enterprise updateEnterprise(Enterprise new_enterprise, Long id) throws Exception{
+        Enterprise enterprise = enterpriseRepository.findById(id).orElseThrow(
+                () -> new Exception("Empresa no existe")
+        );
 
+        enterprise.setEnterprise(new_enterprise.getName(),new_enterprise.getDocument(),new_enterprise.getPhone(), new_enterprise.getAddress(), new_enterprise.getUpdatedAt());
+        return  this.enterpriseRepository.save(enterprise);
     }
 
-   public String DeleteEnterprise(Long id) throws Exception{
 
-    }*/
+   public String deleteEnterprise(Long id){
+        this.enterpriseRepository.deleteById(id);
+        return "Se ha eliminado";
+
+    }
 
 }

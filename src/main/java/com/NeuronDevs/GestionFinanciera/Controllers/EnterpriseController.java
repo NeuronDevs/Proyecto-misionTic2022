@@ -35,13 +35,13 @@ public class EnterpriseController {
     }
 
     @PatchMapping("/{id}")
-    public String updateEnterprise(@PathVariable Long id){
-        return "Este es un controlador para generar empresas";
+    public Enterprise updateEnterprise(@RequestBody Enterprise enterprise, @PathVariable Long id) throws Exception {
+        return this.enterpriseService.updateEnterprise(enterprise, id);
     }
 
     @DeleteMapping("/{id}")
     public String deleteEnterprise(@PathVariable Long id){
-        return "Este es un controlador para generar empresas";
+        return this.enterpriseService.deleteEnterprise(id);
     }
 
 }
