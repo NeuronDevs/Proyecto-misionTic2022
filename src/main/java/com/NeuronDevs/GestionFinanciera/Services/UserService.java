@@ -20,7 +20,7 @@ public class UserService {
 
 
     public List<User> getUsers(){
-        return this.userRepository.findAll();
+        return this.userRepository.findAll(); // select * from user
     }
 
     public Optional<User> getUser(Long id) throws Exception {
