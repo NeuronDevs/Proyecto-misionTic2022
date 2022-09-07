@@ -1,5 +1,6 @@
 package com.NeuronDevs.GestionFinanciera.Services;
 
+import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
 import com.NeuronDevs.GestionFinanciera.Entities.Transaction;
 import com.NeuronDevs.GestionFinanciera.Repositories.TransactionRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +19,15 @@ public class TransactionService {
         return this.transactionRepository.findAll();
     }
 
+    public List<Transaction> getTransactions(Optional<Enterprise> enterprise){
+        return this.transactionRepository.findByEnterprise(enterprise);
+    }
+
     public Optional<Transaction> getTransaction(Long id) throws Exception {
         Transaction transaction = this.transactionRepository.findById(id).orElseThrow(
                 () -> new Exception("Transacción no existe")
         );
+
         return Optional.ofNullable(transaction);
     }
 

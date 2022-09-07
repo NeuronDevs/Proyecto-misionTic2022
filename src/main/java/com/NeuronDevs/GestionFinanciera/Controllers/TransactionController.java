@@ -1,7 +1,9 @@
 
 package com.NeuronDevs.GestionFinanciera.Controllers;
 
+import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
 import com.NeuronDevs.GestionFinanciera.Services.TransactionService;
+import com.NeuronDevs.GestionFinanciera.Services.EnterpriseService;
 import com.NeuronDevs.GestionFinanciera.Entities.Transaction;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,18 +11,21 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/enterprises")
+@RequestMapping("/transactions")
 public class TransactionController {
     private final TransactionService transactionService;
+    private final EnterpriseService enterpriseService;
 
-    public TransactionController(TransactionService transactionService) {
+    public TransactionController(TransactionService transactionService,EnterpriseService enterpriseService) {
         this.transactionService = transactionService;
+        this.enterpriseService=enterpriseService;
     }
 
-    @GetMapping("")
-    public List<Transaction> getTransactions(){
-        return this.transactionService.getTransactions();
-
+    @GetMapping("enterprise/{id}/movements")
+    public List<Transaction> getTransactions(@PathVariable Long id) throws Exception{
+        Optional<Enterprise> enterprise =this.enterpriseService.getEnterprise(id);
+        List<Transaction> transactions = this.transactionService.getTransactions(enterprise);
+        return transactions;
     }
 
     @GetMapping("/{id}")
