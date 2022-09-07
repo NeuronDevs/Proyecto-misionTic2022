@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "transaction")
@@ -33,9 +32,8 @@ public class Transaction {
 
     }
 
-    public Transaction(long id, String concept, float amount, User user, Enterprise enterprise, Date createAt,
+    public void setTransaction(String concept, float amount, User user, Enterprise enterprise, Date createAt,
                        Date updateAt) {
-        this.id = id;
         this.concept = concept;
         this.amount = amount;
         this.user = user;
