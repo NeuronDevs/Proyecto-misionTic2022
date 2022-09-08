@@ -25,6 +25,7 @@ public class User {
     private Enum_RoleName role;
     @ManyToOne
     @JoinColumn(name="enterprise_id")
+    @JsonIgnore
     private Enterprise enterprise;
 
     @OneToMany(mappedBy="user")

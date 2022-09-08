@@ -12,6 +12,7 @@ import java.util.Date;
 public class Profile {
     @Id
     @Column(name = "user_id")
+    @JsonIgnore
     private Long user_id;
     @Column
     private String imagen;

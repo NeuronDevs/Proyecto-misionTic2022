@@ -1,7 +1,9 @@
 package com.NeuronDevs.GestionFinanciera.Services;
 
+import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
 import com.NeuronDevs.GestionFinanciera.Entities.Profile;
 import com.NeuronDevs.GestionFinanciera.Entities.User;
+import com.NeuronDevs.GestionFinanciera.Repositories.EnterpriseRepository;
 import com.NeuronDevs.GestionFinanciera.Repositories.ProfileRepository;
 import com.NeuronDevs.GestionFinanciera.Repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     private final ProfileRepository profileRepository;
+    private final EnterpriseRepository enterpriseRepository;
 
 
     public List<User> getUsers(){
@@ -40,14 +43,20 @@ public class UserService {
         );
         new_user.getProfile().setUser_id(user_id);
         user.setUser(new_user.getEmail(),new_user.getProfile(),new_user.getRole(),new_user.getEnterprise());
-        return  userRepository.save(user);
+        return  this.userRepository.save(user);
     }
 
 
-    public User newUser(User user) {
+    public User newUser(User user,Long id_e) throws Exception {
         Profile profile= new Profile();
         profile.setProfile(user.getId(),user,user.getCreatedAt());
         user.setProfile(profile);
+
+        Enterprise enterprise = this.enterpriseRepository.findById(id_e).orElseThrow(
+                () -> new Exception("Empresa no existe")
+        );
+        user.setEnterprise(enterprise);
+
         this.userRepository.save(user);
         this.profileRepository.save(profile);
         return user;

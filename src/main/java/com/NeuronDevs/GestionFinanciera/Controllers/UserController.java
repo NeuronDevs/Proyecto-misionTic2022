@@ -28,9 +28,9 @@ public class UserController {
     }
 
 
-    @PostMapping("")
-    public User newUser(@RequestBody User user) {
-        return this.userService.newUser(user);
+    @PostMapping("/enterprise/{id_e}")
+    public User newUser(@RequestBody User user,@PathVariable Long id_e) throws Exception {
+        return this.userService.newUser(user, id_e);
     }
 
     @GetMapping("/{id}")

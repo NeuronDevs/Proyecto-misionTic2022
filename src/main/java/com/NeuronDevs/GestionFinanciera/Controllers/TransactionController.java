@@ -5,48 +5,44 @@ import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
 import com.NeuronDevs.GestionFinanciera.Services.TransactionService;
 import com.NeuronDevs.GestionFinanciera.Services.EnterpriseService;
 import com.NeuronDevs.GestionFinanciera.Entities.Transaction;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/enterprises")
+@RequiredArgsConstructor
 public class TransactionController {
     private final TransactionService transactionService;
-    private final EnterpriseService enterpriseService;
 
-    public TransactionController(TransactionService transactionService,EnterpriseService enterpriseService) {
-        this.transactionService = transactionService;
-        this.enterpriseService=enterpriseService;
-    }
 
-    @GetMapping("enterprise/{id}/movements")
+    @GetMapping("/{id}/movements")
     public List<Transaction> getTransactions(@PathVariable Long id) throws Exception{
-        Optional<Enterprise> enterprise =this.enterpriseService.getEnterprise(id);
-        List<Transaction> transactions = this.transactionService.getTransactions(enterprise);
-        return transactions;
+        return  this.transactionService.getTransactions(id);
+
     }
 
-    @GetMapping("/{id}")
-    public Optional<Transaction> getTransaction(@PathVariable Long id) throws Exception{
-        return this.transactionService.getTransaction(id);
+    @GetMapping("/{id_e}/movements/{id_t}")
+    public Optional<Transaction> getTransaction(@PathVariable Long id_e,@PathVariable Long id_t) throws Exception{
+        return this.transactionService.getTransaction(id_e,id_t);
     }
 
-    @PostMapping("")
-    public String newTransaction(@RequestBody Transaction transaction){
-        Transaction newTransaction=this.transactionService.newTransaction(transaction);
-        return "Transacción generada "+newTransaction.toString();
+    @PostMapping("/{id_e}/movements")
+    public Transaction newTransaction(@RequestBody Transaction transaction,@PathVariable Long id_e) throws Exception {
+        return this.transactionService.newTransaction(transaction,id_e);
+
     }
 
-    @PatchMapping("/{id}")
-    public Transaction updateTransaction(@RequestBody Transaction transaction, @PathVariable Long id) throws Exception {
-        return this.transactionService.updateTransaction(transaction, id);
+    @PatchMapping("/{id_e}/movements/{id_t}")
+    public Transaction updateTransaction(@RequestBody Transaction transaction,@PathVariable Long id_e, @PathVariable Long id_t) throws Exception {
+        return this.transactionService.updateTransaction(transaction, id_e,id_t);
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteTransaction(@PathVariable Long id){
-        return this.transactionService.deleteTransaction(id);
+    @DeleteMapping("/{id_e}/movements/{id_t}")
+    public String deleteTransaction(@PathVariable Long id_e,@PathVariable Long id_t){
+        return this.transactionService.deleteTransaction(id_e, id_t);
     }
 }
 

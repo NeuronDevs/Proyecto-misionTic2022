@@ -27,7 +27,6 @@ public class Enterprise {
     private String address;
 
     @OneToMany(mappedBy="enterprise")
-    @JsonIgnore
     private List<User> users;
 
     @OneToMany(mappedBy="enterprise")

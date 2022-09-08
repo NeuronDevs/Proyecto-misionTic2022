@@ -2,7 +2,10 @@ package com.NeuronDevs.GestionFinanciera.Services;
 
 import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
 import com.NeuronDevs.GestionFinanciera.Entities.Transaction;
+import com.NeuronDevs.GestionFinanciera.Entities.User;
+import com.NeuronDevs.GestionFinanciera.Repositories.EnterpriseRepository;
 import com.NeuronDevs.GestionFinanciera.Repositories.TransactionRepository;
+import com.NeuronDevs.GestionFinanciera.Repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,39 +17,57 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TransactionService {
     private final TransactionRepository transactionRepository;
+    private final EnterpriseRepository enterpriseRepository;
+    private final UserRepository userRepository;
 
-    public List<Transaction> getTransactions(){
-        return this.transactionRepository.findAll();
+
+    public List<Transaction> getTransactions(Long id){
+        return this.transactionRepository.findAllByEnterpriseId(id);
     }
 
-    public List<Transaction> getTransactions(Optional<Enterprise> enterprise){
-        return this.transactionRepository.findByEnterprise(enterprise);
-    }
-
-    public Optional<Transaction> getTransaction(Long id) throws Exception {
-        Transaction transaction = this.transactionRepository.findById(id).orElseThrow(
+    public Optional<Transaction> getTransaction(Long id_e,Long id_t) throws Exception {
+        Transaction transaction = this.transactionRepository.findByEnterpriseIdAndId(id_e,id_t).orElseThrow(
                 () -> new Exception("Transacción no existe")
         );
 
         return Optional.ofNullable(transaction);
     }
 
-    public Transaction updateTransaction(Transaction new_transaction, Long id) throws Exception{
-        Transaction transaction = transactionRepository.findById(id).orElseThrow(
+    public Transaction updateTransaction(Transaction new_transaction,Long id_e, Long id_t) throws Exception{
+        Transaction transaction = this.transactionRepository.findByEnterpriseIdAndId(id_e,id_t).orElseThrow(
                 () -> new Exception("Transacción no existe")
         );
+        User user =  this.userRepository.findById(new_transaction.getUser().getId()).orElseThrow(
+                () -> new Exception("Usuario no existe ")
+        );
+        new_transaction.setUser(user);
 
-        transaction.setTransaction(new_transaction.getConcept(),new_transaction.getAmount(),new_transaction.getUser(), new_transaction.getEnterprise(), new_transaction.getCreateAt(),
-                new_transaction.getUpdateAt());
+        transaction.setTransaction(new_transaction.getConcept(),new_transaction.getAmount(),new_transaction.getUser(), new_transaction.getUpdateAt());
         return  this.transactionRepository.save(transaction);
     }
 
-    public Transaction newTransaction(Transaction transaction) {
+    public Transaction newTransaction(Transaction transaction, Long id_e) throws Exception {
+       Enterprise enterprise =  this.enterpriseRepository.findById(id_e).orElseThrow(
+               () -> new Exception("Empresa no existe ")
+       );
+        transaction.setEnterprise(enterprise);
+
+        User user =  this.userRepository.findById(transaction.getUser().getId()).orElseThrow(
+                () -> new Exception("Usuario no existe ")
+        );
+        transaction.setEnterprise(enterprise);
+        transaction.setUser(user);
         return this.transactionRepository.save(transaction);
     }
 
-    public String deleteTransaction(Long id){
-        this.transactionRepository.deleteById(id);
+    public String deleteTransaction(Long id_e,Long id_t){
+        boolean transaction = this.transactionRepository.existsByEnterpriseIdAndId(id_e, id_t);
+        if(transaction){
+            this.transactionRepository.deleteById(id_t);
+        }else {
+            return "Transaccion no encontrada";
+        }
+
         return "Transacción eliminada";
     }
 

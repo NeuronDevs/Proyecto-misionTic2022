@@ -1,5 +1,6 @@
 package com.NeuronDevs.GestionFinanciera.Entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class Transaction {
     private User user;
     @ManyToOne
     @JoinColumn(name="enterprise_id", nullable=false)
-    @JsonBackReference
+    @JsonIgnore
     private Enterprise enterprise;
     @Column
     private Date createAt;
@@ -32,13 +33,10 @@ public class Transaction {
 
     }
 
-    public void setTransaction(String concept, float amount, User user, Enterprise enterprise, Date createAt,
-                       Date updateAt) {
+    public void setTransaction(String concept, float amount, User user,  Date updateAt) {
         this.concept = concept;
         this.amount = amount;
         this.user = user;
-        this.enterprise = enterprise;
-        this.createAt = createAt;
         this.updateAt = updateAt;
     }
 
