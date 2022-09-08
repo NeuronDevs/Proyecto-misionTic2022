@@ -43,9 +43,14 @@ public class EnterpriseService {
 
 
    public String deleteEnterprise(Long id){
-        this.enterpriseRepository.deleteById(id);
-        return "Se ha eliminado";
+       boolean enterprise = this.enterpriseRepository.existsById(id);
+       if(enterprise){
+           this.enterpriseRepository.deleteById(id);
+       }else {
+           return "Empresa no encontrada";
+       }
 
+       return "Empresa eliminada";
     }
 
 }

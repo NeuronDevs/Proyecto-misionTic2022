@@ -64,13 +64,14 @@ public class UserService {
 
 
     public String DeleteUser(Long id) throws Exception {
-        User user = userRepository.findById(id).orElseThrow(
-                () -> new Exception("Usuario no existe")
-        );
+        boolean user = this.userRepository.existsById(id);
+        if(user){
+            this.profileRepository.deleteById(id);
+            this.userRepository.deleteById(id);
+        }else {
+            return "Usuario no encontrada";
+        }
 
-        this.profileRepository.deleteById(id);
-        this.userRepository.deleteById(id);
-
-        return "Eliminado correctamente";
+        return "usuario eliminado";
     }
 }

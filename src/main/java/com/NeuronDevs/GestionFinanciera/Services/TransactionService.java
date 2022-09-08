@@ -55,8 +55,9 @@ public class TransactionService {
         User user =  this.userRepository.findById(transaction.getUser().getId()).orElseThrow(
                 () -> new Exception("Usuario no existe ")
         );
-        transaction.setEnterprise(enterprise);
         transaction.setUser(user);
+
+
         return this.transactionRepository.save(transaction);
     }
 
