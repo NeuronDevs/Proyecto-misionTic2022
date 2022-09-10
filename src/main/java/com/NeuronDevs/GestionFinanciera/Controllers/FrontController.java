@@ -10,4 +10,8 @@ public class FrontController {
     public String index(){
         return "index";
     }
+    @GetMapping("/inicio")
+    public String inicio(){
+        return "inicio";
+    }
 }

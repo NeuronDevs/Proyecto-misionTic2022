@@ -32,9 +32,9 @@ Git clone https://github.com/NeuronDevs/Proyecto-misionTic2022.git
 ## Herramientas usadas 🛠
 * [Java Spring Boot](https://spring.io/projects/spring-boot) - Lenguaje principal.
 * [Thymeleaf](https://www.thymeleaf.org/) - Motor de plantillas HTML.
-* [Bootstrap](https://getbootstrap.com/) - Librería de CSS
-* [PostgreSQL](https://www.postgresql.org/) - Relational database management system
-* [SupaBase](https://supabase.com/) - Firebase alternative
+* [Bootstrap](https://getbootstrap.com/) - Librería de CSS.
+* [PostgreSQL](https://www.postgresql.org/) - Relational database management system.
+* [SupaBase](https://supabase.com/) - Firebase alternative.
 
 ## Arquitectura del sistema 🏛
 
