@@ -43,15 +43,15 @@ Git clone https://github.com/NeuronDevs/Proyecto-misionTic2022.git
 
 ## Autores ✒️
 
-* **Luis Sebastian Olivares Puello** - *[ Desarollador / Administrador de BD ]* - [iluisolivares](https://github.com/iluisolivares)
+* **Luis Sebastian Olivares Puello** - *[ Desarollador / Administrador de BD ]* - [@iLuisolivares](https://github.com/iluisolivares)
 
-* **Paula Andrea Cortés Rojas** - *[ Desarollador / Analista ]* - [Paucort](https://github.com/Paucort)
+* **Paula Andrea Cortés Rojas** - *[ Desarollador / Analista ]* - [@Paucort](https://github.com/Paucort)
 
-* **Jessica Andrea Lopez Obando** - *[ Desarollador / Product Owner ]* - [JessiLopezObando](https://github.com/JessiLopezObando)
+* **Jessica Andrea Lopez Obando** - *[ Desarollador ]* - [@JessiLopezObando](https://github.com/JessiLopezObando)
 
-* **Walter Yesid Mejía Chimá** - *[ Desarollador / Scrum Master ]* - [waltmejia](https://github.com/waltmejia)
+* **Walter Yesid Mejía Chimá** - *[ Desarollador / Scrum Master ]* - [@Waltmejia](https://github.com/waltmejia)
 
-* **Sergio Alejandro Quintero Puentes** - *[ Desarollador ]* - [sergioqp82](https://github.com/sergioqp82)
+* **Sergio Alejandro Quintero Puentes** - *[ Desarollador ]* - [@Sergioqp82](https://github.com/sergioqp82)
 
 ---
 
