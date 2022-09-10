@@ -1,9 +1,9 @@
 # Proyecto MisionTic2022 - Ciclo3 
 
----
-<b> Equipo</b> _Des. Software Grupo 9_
-## Descripcion del problema 📋
 
+<b> Equipo</b> _Des. Software Grupo 9_
+
+## Descripcion del problema 📋
 
 
 _Se requiere un aplicativo web para que un administrador pueda gestionar los ingresos y egresos de su empresa. El sistema debería permitir visualizar los totales de la empresa para que el gerente pueda tomar decisiones sobre la situación financiera._
@@ -12,22 +12,35 @@ _El procedimiento de registro de gastos y ventas es un proceso que puede ser ted
 
 _Adicionalmente, debido a que las transacciones contables son supremamente delicadas, el sistema debería permitir llevar una trazabilidad de quién registró cada transacción, por lo cual el sistema debe contar con un sistema de autenticación._
 
----
 ## Comenzando 🚀
 ```
 Git clone https://github.com/NeuronDevs/Proyecto-misionTic2022.git
 ```
 
----
 
-### Herramientas usadas 🛠
+## Historias de usuario 👨🏻‍💻
 
+<p align="center"> <img height="400"  src= "https://i.ibb.co/K9PCWty/Captura-de-Pantalla-2022-08-30-a-la-s-22-41-13.png"/> </p>
+
+
+
+## Diagrama Entidad-Relacion 🧩
+
+<p align="center"> <img  src= "https://i.ibb.co/WG18XJK/Diagrama-Entidad-Relaci-n.png"/> </p>
+
+
+## Herramientas usadas 🛠
 * [Java Spring Boot](https://spring.io/projects/spring-boot) - Lenguaje principal.
 * [Thymeleaf](https://www.thymeleaf.org/) - Motor de plantillas HTML.
 * [Bootstrap](https://getbootstrap.com/) - Librería de CSS
-* [Heroku](https://www.google.com/search?client=firefox-b-d&q=herok) -  Plataforma de computación en la Nube
+* [PostgreSQL](https://www.postgresql.org/) - Relational database management system
+* [SupaBase](https://supabase.com/) - Firebase alternative
 
----
+## Arquitectura del sistema 🏛
+
+<p align="center"> <img height="500" src= "https://i.ibb.co/bJWYv3h/k-JIZ4-xh-zy-Bmk-F-zh-Aa-Lu-Bu-NJ7-QC435.png"/> </p>
+
+
 ## Autores ✒️
 
 * **Luis Sebastian Olivares Puello** - *[ Desarollador / Administrador de BD ]* - [iluisolivares](https://github.com/iluisolivares)
@@ -42,5 +55,6 @@ Git clone https://github.com/NeuronDevs/Proyecto-misionTic2022.git
 
 ---
 
- _<center>NeuronDevs/Des. Software Grupo 9 - Copyright© 2022.</center>_
+_<p align="center">NeuronDevs/Des. Software Grupo 9 - Copyright© 2022.</p>_
+
 
