@@ -2,8 +2,10 @@ package com.NeuronDevs.GestionFinanciera.Entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +17,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column
+    private String name;
     @Column(unique = true)
     private String email;
 
@@ -32,12 +37,13 @@ public class User {
     @JsonIgnore
     private List<Transaction> transactions;
     @Column
-    private Date createdAt;
+    private LocalDate createdAt;
 
     public User() {
     }
 
-    public void setUser( String email, Profile profile, Enum_RoleName role, Enterprise enterprise) {
+    public void setUser(String name, String email, Profile profile, Enum_RoleName role, Enterprise enterprise) {
+        this.name = name;
         this.email = email;
         this.profile = profile;
         this.role = role;

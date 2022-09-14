@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -34,11 +35,11 @@ public class Enterprise {
     private List<Transaction> transactions;
 
     @Column
-    private Date createdAt;
+    private LocalDate createdAt;
     @Column
-    private Date updatedAt;
+    private LocalDate updatedAt;
 
-    public Enterprise(Long id, String name, String document, String phone, String address, Date createdAt, Date updatedAt) {
+    public Enterprise(Long id, String name, String document, String phone, String address, LocalDate createdAt, LocalDate updatedAt) {
         this.setId(id);
         this.setName(name);
         this.setDocument(document);
@@ -51,7 +52,7 @@ public class Enterprise {
     public Enterprise() {
     }
 
-    public void setEnterprise(String name, String document, String phone, String address, Date updatedAt) {
+    public void setEnterprise(String name, String document, String phone, String address, LocalDate updatedAt) {
         this.name = name;
         this.document = document;
         this.phone = phone;

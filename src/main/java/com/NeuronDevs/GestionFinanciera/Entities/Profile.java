@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -24,11 +25,11 @@ public class Profile {
     @JsonIgnore
     private User user;
     @Column
-    private Date createdAt;
+    private LocalDate createdAt;
     @Column
-    private Date updateAt;
+    private LocalDate updateAt;
 
-    public Profile(Long user_id, Date createdAt) {
+    public Profile(Long user_id, LocalDate createdAt) {
         this.user_id = user_id;
         this.createdAt = createdAt;
     }
@@ -36,7 +37,7 @@ public class Profile {
     public Profile() {
     }
 
-    public void setProfile(Long user_id, User user, Date createdAt) {
+    public void setProfile(Long user_id, User user, LocalDate createdAt) {
         this.user_id = user_id;
         this.user = user;
         this.createdAt = createdAt;

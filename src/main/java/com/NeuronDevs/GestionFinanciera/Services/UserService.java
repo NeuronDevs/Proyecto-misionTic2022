@@ -42,7 +42,7 @@ public class UserService {
                 () -> new Exception("Usuario no existe")
         );
         new_user.getProfile().setUser_id(user_id);
-        user.setUser(new_user.getEmail(),new_user.getProfile(),new_user.getRole(),new_user.getEnterprise());
+        user.setUser(new_user.getName(),new_user.getEmail(),new_user.getProfile(),new_user.getRole(),new_user.getEnterprise());
         return  this.userRepository.save(user);
     }
 
