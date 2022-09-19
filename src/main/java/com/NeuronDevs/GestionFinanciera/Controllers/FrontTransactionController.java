@@ -1,9 +1,7 @@
 package com.NeuronDevs.GestionFinanciera.Controllers;
 
 import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
-
 import com.NeuronDevs.GestionFinanciera.Entities.Transaction;
-
 import com.NeuronDevs.GestionFinanciera.Entities.User;
 import com.NeuronDevs.GestionFinanciera.Services.EnterpriseService;
 import com.NeuronDevs.GestionFinanciera.Services.TransactionService;
@@ -15,37 +13,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
-public class FrontController {
+public class FrontTransactionController {
 
     UserService userService;
     EnterpriseService enterpriseService;
     TransactionService transactionService;
-
-    @GetMapping("/")
-    public String index(){
-        return "index";
-    }
-    @GetMapping("/inicio")
-    public String inicio(){
-        return "inicio";
-    }
-
-    @GetMapping("/gestionar/usuarios")
-    public String usuario(Model model){
-        List<User> users =  this.userService.getUsers();
-        model.addAttribute("users", users);
-        return "usuarios";
-    }
-
-    @GetMapping("/gestionar/usuarios/nuevo")
-    public String nuevo_usuario(){
-        return "nuevo_usuario";
-    }
-
-    /*
     @GetMapping("/gestionar/transacciones/empresas")
     public String listEnterprises(Model model){
         List<Enterprise> enterprises =  this.enterpriseService.consultarEnterprise();
@@ -58,5 +34,16 @@ public class FrontController {
         model.addAttribute("transactions", transactions);
         return "transactions";
     }
-    */
+    @GetMapping("/gestionar/transacciones/empresa/{id}/nueva")
+    public String newTransaction(Model model, @PathVariable Long id){
+        Optional<Enterprise> enterprise= Optional.empty();
+        try{
+            enterprise=this.enterpriseService.getEnterprise(id);
+        }catch(Exception e){
+            return "la empresa no existe, consulte al administrador";
+        }
+        model.addAttribute("enterprise",enterprise);
+        return "new-transaction";
+    }
+
 }

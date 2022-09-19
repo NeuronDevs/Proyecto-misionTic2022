@@ -1,4 +1,3 @@
-
 package com.NeuronDevs.GestionFinanciera.Controllers;
 
 import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
@@ -12,12 +11,19 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/enterprises")
-@RequiredArgsConstructor
+@RequestMapping("/transactions")
 public class TransactionController {
     private final TransactionService transactionService;
 
+    public TransactionController(TransactionService transactionService) {
+        this.transactionService = transactionService;
+    }
 
+    @GetMapping("")
+    public String showEnterprises() throws Exception{
+        return  "listado empresas";
+
+    }
     @GetMapping("/{id}/movements")
     public List<Transaction> getTransactions(@PathVariable Long id) throws Exception{
         return  this.transactionService.getTransactions(id);
