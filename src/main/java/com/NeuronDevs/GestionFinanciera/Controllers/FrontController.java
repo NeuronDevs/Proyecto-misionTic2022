@@ -1,5 +1,6 @@
 package com.NeuronDevs.GestionFinanciera.Controllers;
 
+import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
 import com.NeuronDevs.GestionFinanciera.Entities.User;
 import com.NeuronDevs.GestionFinanciera.Services.UserService;
 import lombok.AllArgsConstructor;
