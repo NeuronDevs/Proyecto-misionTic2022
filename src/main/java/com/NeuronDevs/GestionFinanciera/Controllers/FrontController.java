@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -46,6 +47,14 @@ public class FrontController {
         model.addAttribute("enterprises", enterprises);
         model.addAttribute("user",new User());
         return "nuevo_usuario";
+    }
+    @GetMapping("/gestionar/usuarios/editar/{id}")
+    public String nuevo_usuario(Model model, @PathVariable("id") Long id) throws Exception {
+        Optional<User> user = this.userService.getUser(id);
+        List<Enterprise> enterprises =  this.enterpriseService.consultarEnterprise();
+        model.addAttribute("enterprises", enterprises);
+        model.addAttribute("user", user);
+        return "editar_usuario";
     }
 
     /*

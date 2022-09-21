@@ -9,6 +9,7 @@ import com.NeuronDevs.GestionFinanciera.Repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,9 +42,11 @@ public class UserService {
         User user = userRepository.findById(user_id).orElseThrow(
                 () -> new Exception("Usuario no existe")
         );
-        new_user.getProfile().setUser_id(user_id);
-        user.setUser(new_user.getName(),new_user.getEmail(),new_user.getProfile(),new_user.getRole(),new_user.getEnterprise());
-        return  this.userRepository.save(user);
+        new_user.setCreatedAt(user.getCreatedAt());
+        new_user.setProfile(user.getProfile());
+        LocalDate now = LocalDate.now();
+        new_user.getProfile().setUpdateAt(now);
+        return  this.userRepository.save(new_user);
     }
 
 
@@ -65,6 +68,8 @@ public class UserService {
         Profile profile= new Profile();
         profile.setProfile(user.getId(),user,user.getCreatedAt());
         user.setProfile(profile);
+        LocalDate now = LocalDate.now();
+        user.setCreatedAt(now);
         this.userRepository.save(user);
         this.profileRepository.save(profile);
         return user;

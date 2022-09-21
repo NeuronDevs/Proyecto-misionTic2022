@@ -62,7 +62,7 @@
               <td th:text="${user.role}"></td>
               <td th:text="${user.createdAt }"></td>
               <td class="d-flex justify-content-evenly align-items-center">
-                <form > <button type="submit" class=" btn text-light rounded-bottom  btn-info"> Editar </button> </form>
+                <a th:href="@{/gestionar/usuarios/editar/{id}(id=${user.id})}" class=" btn text-light rounded-bottom  btn-info"> Editar </a>
                 <form th:action="@{/users/{id}(id=${user.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> Eliminar </button> </form>
               </td>
             </tr>
