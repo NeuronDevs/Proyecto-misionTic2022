@@ -28,7 +28,7 @@ public class EnterpriseController {
         return this.enterpriseService.getEnterprise(id);
     }
 
-    @PostMapping("")
+    @PostMapping("/gestionar/empresas/nueva")
     public String newEnterprise(@RequestBody Enterprise enterprise){
         this.enterpriseService.newEnterprise(enterprise);
         return "Haz creado una empresa";
