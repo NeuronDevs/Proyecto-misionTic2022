@@ -57,11 +57,11 @@
             <tbody>
             <tr th:each="user : ${users}">
               <th scope="row" th:text="${user.id}"></th>
-              <td style="height: 56px"  th:text="${user.name}"></td>
-              <td style="height: 56px"  th:text="${user.email}"></td>
-              <td style="height: 56px"  th:text="${user.role}"></td>
-              <td style="height: 56px"  th:text="${user.createdAt }"></td>
-              <td style="height: 56px" class="d-flex justify-content-evenly align-items-center">
+              <td th:text="${user.name}"></td>
+              <td th:text="${user.email}"></td>
+              <td th:text="${user.role}"></td>
+              <td th:text="${user.createdAt }"></td>
+              <td class="d-flex justify-content-evenly align-items-center">
                 <form > <button type="submit" class=" btn text-light rounded-bottom  btn-info"> Editar </button> </form>
                 <form th:action="@{/users/{id}(id=${user.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> Eliminar </button> </form>
               </td>

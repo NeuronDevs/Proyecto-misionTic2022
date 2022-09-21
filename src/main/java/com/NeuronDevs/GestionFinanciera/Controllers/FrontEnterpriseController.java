@@ -16,6 +16,7 @@ public class FrontEnterpriseController {
 
     private EnterpriseService enterpriseService;
 
+    //Para consultar todas las empresas - - con model es como se comunica el controlador con thymeleaf
     @GetMapping("/gestionar/empresas")
     public String empresa(Model model){
         List<Enterprise> enterprises =  this.enterpriseService.consultarEnterprise();
@@ -23,15 +24,11 @@ public class FrontEnterpriseController {
         return "Empresas";
     }
 
-
+    //Para crear una empresa - con model es como se comunica el controlador con thymeleaf
     @GetMapping("/gestionar/empresas/nueva_empresa")
     public String nueva_empresa(Model model){
         model.addAttribute("enterprise",new Enterprise());
         return "nueva_empresa";
     }
 
-//    @GetMapping("/gestionar/empresas/nueva_empresa")
-//    public String nueva_empresa(){
-//        return "nueva_empresa";
-//    }
 }

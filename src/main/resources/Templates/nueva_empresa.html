@@ -43,8 +43,9 @@
             <div class="col py-3 d-flex justify-content-evenly align-items-center text-center">
                 <h1>Nueva Empresa</h1>
 
-
-                <form th:action="@{/gestionar/empresas}" th:method="post" >
+                <!-- Formulario para crear una empresa-->
+                <!-- Cuando se da click en agregar nueva empresa sale un error que dice que el metodo post no es soportado-->
+                <form th:action="@{/gestionar/empresas}" th:method="post">
 
                     <div class="mb-3">
                         <label for="nombreEmpresa" class="form-label">Nombre</label>
@@ -66,41 +67,9 @@
                         <input th:field="${enterprise.address}" type="text" class="form-control" id="direccionEmpresa" >
                     </div>
 
-
-                    <!--
-                    <form>
-
-                    <div class="mb-3">
-                        <label for="nombreEmpresa" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombreEmpresa" aria-describedby="nameHelp">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="documentoEmpresa" class="form-label">Documento</label>
-                        <input type="text" class="form-control" id="documentoEmpresa" aria-describedby="documentHelp">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="numeroEmpresa" class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" id="numeroEmpresa" aria-describedby="phoneHelp">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="direccionEmpresa" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" id="direccionEmpresa" aria-describedby="addressHelp">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="creacionEmpresa" class="form-label">Creación</label>
-                        <input type="date" class="form-control" id="creacionEmpresa" aria-describedby="createdAtHelp">
-                    </div>
-
-                    //-->
                     <button type="submit" class="btn btn-primary">Guardar Empresa</button>
 
                 </form>
-
-
 
             </div>
         </div>

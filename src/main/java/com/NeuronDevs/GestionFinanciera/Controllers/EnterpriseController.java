@@ -21,33 +21,26 @@ public class EnterpriseController {
         this.enterpriseService = enterpriseService;
     }
 
+    //Para obtener todas las empresas
     @GetMapping("")
     public List<Enterprise> getEnterprises(){
        return this.enterpriseService.consultarEnterprise();
 
    }
 
+    //Para obtener una sola empresa
     @GetMapping("/{id}")
     public Optional<Enterprise> getEnterprise(@PathVariable Long id) throws Exception{
         return this.enterpriseService.getEnterprise(id);
     }
 
-//    @PostMapping("")
-//    public String newEnterprise(@RequestBody Enterprise enterprise){
-//        this.enterpriseService.newEnterprise(enterprise);
-//        return "Haz creado una empresa";
-//    }
-
+    //Para definir que cuando se llame nueva_empresa, retorne la pagina nueva_empresa
     @GetMapping("/nueva_empresa")
     private String seeRegisterEnterprise(Enterprise enterprise){
         return "nueva_empresa";
     }
 
-//    @PostMapping("")
-//    public String newEnterprise(Enterprise enterprise){
-//        this.enterpriseService.newEnterprise(enterprise);
-//        return "redirect:/gestionar/empresas";
-//    }
+    //Para hacer el Post para crear nueva empresa
     @PostMapping("")
     public RedirectView newEnterprise(@ModelAttribute Enterprise enterprise, Model model) throws Exception {
         LocalDate now = LocalDate.now();
@@ -57,14 +50,15 @@ public class EnterpriseController {
         return new RedirectView("/gestionar/empresas");
     }
 
-//    @PatchMapping("/{id}")
-//    public Enterprise updateEnterprise(@RequestBody Enterprise enterprise, @PathVariable Long id) throws Exception {
-//        return this.enterpriseService.updateEnterprise(enterprise, id);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public String deleteEnterprise(@PathVariable Long id){
-//        return this.enterpriseService.deleteEnterprise(id);
-//    }
+    //Para actualizar una empresa
+    @PatchMapping("/{id}")
+    public Enterprise updateEnterprise(@RequestBody Enterprise enterprise, @PathVariable Long id) throws Exception {
+        return this.enterpriseService.updateEnterprise(enterprise, id);
+    }
+    //Para borrar una empresa
+    @DeleteMapping("/{id}")
+    public String deleteEnterprise(@PathVariable Long id){
+        return this.enterpriseService.deleteEnterprise(id);
+    }
 
 }
