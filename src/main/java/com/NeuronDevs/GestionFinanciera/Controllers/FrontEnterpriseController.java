@@ -23,15 +23,15 @@ public class FrontEnterpriseController {
         return "Empresas";
     }
 
-    @GetMapping("/gestionar/empresas/nueva")
+
+    @GetMapping("/gestionar/empresas/nueva_empresa")
     public String nueva_empresa(Model model){
-       // List<Enterprise> nuevaEnterprise =  this.enterpriseService.newEnterprise(enterprise);
-        model.addAttribute("nuevaEnterprise", new Enterprise());
+        model.addAttribute("enterprise",new Enterprise());
         return "nueva_empresa";
     }
 
-    /*@GetMapping("/gestionar/empresas/nueva")
-    public String nueva_empresa(){
-        return "nueva_empresa";
-    }*/
+//    @GetMapping("/gestionar/empresas/nueva_empresa")
+//    public String nueva_empresa(){
+//        return "nueva_empresa";
+//    }
 }
