@@ -41,7 +41,10 @@ public class FrontController {
     }
 
     @GetMapping("/gestionar/usuarios/nuevo")
-    public String nuevo_usuario(){
+    public String nuevo_usuario(Model model){
+        List<Enterprise> enterprises =  this.enterpriseService.consultarEnterprise();
+        model.addAttribute("enterprises", enterprises);
+        model.addAttribute("user",new User());
         return "nuevo_usuario";
     }
 

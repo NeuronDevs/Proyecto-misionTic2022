@@ -61,6 +61,14 @@ public class UserService {
         this.profileRepository.save(profile);
         return user;
     }
+    public User newUser2(User user) throws Exception {
+        Profile profile= new Profile();
+        profile.setProfile(user.getId(),user,user.getCreatedAt());
+        user.setProfile(profile);
+        this.userRepository.save(user);
+        this.profileRepository.save(profile);
+        return user;
+    }
 
 
     public String DeleteUser(Long id) throws Exception {

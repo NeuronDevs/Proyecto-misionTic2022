@@ -2,8 +2,11 @@ package com.NeuronDevs.GestionFinanciera.Controllers;
 
 import com.NeuronDevs.GestionFinanciera.Entities.*;
 import com.NeuronDevs.GestionFinanciera.Services.UserService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +32,17 @@ public class UserController {
 
 
     @PostMapping("/enterprise/{id_e}")
-    public User newUser(@RequestBody User user,@PathVariable Long id_e) throws Exception {
+    public User newUser(@ModelAttribute User user, Model model , @PathVariable Long id_e) throws Exception {
+        model.addAttribute(user);
         return this.userService.newUser(user, id_e);
+    }
+    @PostMapping("")
+    public RedirectView newUser2(@ModelAttribute User user, Model model) throws Exception {
+        LocalDate now = LocalDate.now();
+        user.setCreatedAt(now);
+        model.addAttribute(user);
+        this.userService.newUser2(user);
+        return new RedirectView("/gestionar/usuarios");
     }
 
     @GetMapping("/{id}")
