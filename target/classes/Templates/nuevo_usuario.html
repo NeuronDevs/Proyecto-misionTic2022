@@ -42,35 +42,36 @@
       </div>
       <div class="col py-3 d-flex justify-content-evenly align-items-center text-center">
 
-        <form>
+        <form th:action="@{/users}" th:method="post" th:object="${user}">
           <div class="mb-3">
             <label for="nombreUsuario" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombreUsuario" >
+            <input th:field="*{name}" type="text" class="form-control" id="nombreUsuario" >
           </div>
 
           <div class="mb-3">
             <label for="emailUsuario" class="form-label">Correo electronico</label>
-            <input type="email" class="form-control" id="emailUsuario" aria-describedby="emailHelp">
+            <input th:field="*{email}" type="email" class="form-control" id="emailUsuario" aria-describedby="emailHelp">
           </div>
 
-          <div class="mb-3">
-            <label for="numeroUsuario" class="form-label">Numero celular</label>
-            <input type="number" class="form-control" id="numeroUsuario" aria-describedby="phoneHelp">
+          <!--
+        <div class="mb-3">
+           <label for="numeroUsuario" class="form-label">Numero celular</label>
+            <input th:field="*{}" type="number" class="form-control" id="numeroUsuario" aria-describedby="phoneHelp">
           </div>
+          //-->
 
           <div class="mb-3">
             <label for="roleUsuario" class="form-label">Seleccionar role </label>
-            <select id="roleUsuario" class="form-select" aria-label="Default select example">
-              <option selected value="1">Operario</option>
-              <option value="0">Admin</option>
+            <select th:field="*{role}" id="roleUsuario" class="form-select" aria-label="Default select example">
+              <option th:selected th:value="'Admin'" th:text="Operario"></option>
+              <option th:value="'Operario'" th:text="Admin"></option>
             </select>
           </div>
 
           <div class="mb-3">
             <label for="enterpriseUsuario" class="form-label">Seleccionar empresa </label>
-            <select id="enterpriseUsuario" class="form-select" aria-label="Default select example">
-              <option selected value="0">Empresa 1</option>
-              <option value="1">Empresa 2</option>
+            <select th:field="*{enterprise.id}" id="enterpriseUsuario" class="form-select" aria-label="Default select example">
+              <option th:each="enterprise : ${enterprises}" th:value="${enterprise.id}" th:text="${enterprise.name}"></option>
             </select>
           </div>
 
@@ -78,8 +79,7 @@
         </form>
 
 
-
-      </div>
+            </div>
     </div>
   </div>
 
