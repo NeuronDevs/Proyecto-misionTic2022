@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="col py-3 text-center table-responsive">
-          <a href="/gestionar/usuarios/nuevo" class="btn btn-dark">Nuevo usuario</a>
+          <a href="/gestionar/usuarios/nuevo" class="btn btn-warning">Nuevo usuario</a>
           <table class="table table-dark caption-top table-striped">
             <caption>Lista de usuarios</caption>
             <thead>
@@ -51,15 +51,20 @@
               <th scope="col">Correo</th>
               <th scope="col">Rol</th>
               <th scope="col">Creacion</th>
+              <th scope="col">Acciones</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
               <th scope="row" th:text="${user.id}"></th>
-              <td th:text="${user.name}"></td>
-              <td th:text="${user.email}"></td>
-              <td th:text="${user.role}"></td>
-              <td th:text="${user.createdAt }"></td>
+              <td style="height: 56px"  th:text="${user.name}"></td>
+              <td style="height: 56px"  th:text="${user.email}"></td>
+              <td style="height: 56px"  th:text="${user.role}"></td>
+              <td style="height: 56px"  th:text="${user.createdAt }"></td>
+              <td style="height: 56px" class="d-flex justify-content-evenly align-items-center">
+                <form > <button type="submit" class=" btn text-light rounded-bottom  btn-info"> Editar </button> </form>
+                <form th:action="@{/users/{id}(id=${user.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> Eliminar </button> </form>
+              </td>
             </tr>
 
             </tbody>

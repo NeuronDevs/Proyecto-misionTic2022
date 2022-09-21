@@ -56,7 +56,8 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable Long id) throws Exception {
-        return this.userService.DeleteUser(id);
+    public RedirectView deleteUser(@PathVariable Long id) throws Exception {
+        this.userService.DeleteUser(id);
+        return new RedirectView("/gestionar/usuarios");
     }
 }
