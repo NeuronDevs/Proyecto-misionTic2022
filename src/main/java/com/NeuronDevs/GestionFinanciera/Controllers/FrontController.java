@@ -1,18 +1,20 @@
 package com.NeuronDevs.GestionFinanciera.Controllers;
 
 import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
-
-import com.NeuronDevs.GestionFinanciera.Entities.Transaction;
-
 import com.NeuronDevs.GestionFinanciera.Entities.User;
+import com.NeuronDevs.GestionFinanciera.Entities.Usuario;
 import com.NeuronDevs.GestionFinanciera.Services.EnterpriseService;
 import com.NeuronDevs.GestionFinanciera.Services.TransactionService;
 import com.NeuronDevs.GestionFinanciera.Services.UserService;
+import com.NeuronDevs.GestionFinanciera.Services.UsuarioService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -22,11 +24,16 @@ import java.util.Optional;
 public class FrontController {
 
     UserService userService;
+    UsuarioService usuarioService;
     EnterpriseService enterpriseService;
     TransactionService transactionService;
 
     @GetMapping("/")
-    public String index(){
+    public String index(Model model, @AuthenticationPrincipal OidcUser principal){
+        if (principal!=null){
+            Usuario usuario = this.usuarioService.getOrCreateUser(principal.getClaims());
+            model.addAttribute("usuario",usuario);
+        }
         return "index";
     }
     @GetMapping("/inicio")
