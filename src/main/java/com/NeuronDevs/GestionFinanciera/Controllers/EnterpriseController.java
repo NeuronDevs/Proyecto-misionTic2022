@@ -57,8 +57,9 @@ public class EnterpriseController {
     }
     //Para borrar una empresa
     @DeleteMapping("/{id}")
-    public String deleteEnterprise(@PathVariable Long id){
-        return this.enterpriseService.deleteEnterprise(id);
+    public RedirectView deleteEnterprise(@PathVariable Long id){
+        this.enterpriseService.deleteEnterprise(id);
+        return new RedirectView("/gestionar/empresas");
     }
 
 }

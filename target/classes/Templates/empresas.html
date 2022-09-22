@@ -52,6 +52,7 @@
                             <th scope="col">Teléfono</th>
                             <th scope="col">Dirección</th>
                             <th scope="col">Creación</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,6 +63,10 @@
                             <td th:text="${enterprise.phone}"></td>
                             <td th:text="${enterprise.address}"></td>
                             <td th:text="${enterprise.createdAt}"></td>
+                            <td class="d-flex justify-content-evenly align-items-center">
+                                <a th:href="@{/}" class=" btn text-light rounded-bottom  btn-info"> Editar </a>
+                                <form th:action="@{/enterprise/{id}(id=${enterprise.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> Eliminar </button> </form>
+                            </td>
                         </tr>
 
                         </tbody>
