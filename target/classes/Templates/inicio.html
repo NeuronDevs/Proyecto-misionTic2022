@@ -11,43 +11,34 @@
 </head>
 <body>
 
-<main>
+<main style="height: 100vh">
 
-            <div class="container-fluid">
-                <div class="row flex-nowrap">
-                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                            <a href="/inicio" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                                <span class="fs-5 d-none d-sm-inline">Menu</span>
-                            </a>
-                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand">
+                <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
+            </a>
 
-                                <li class="nav-item">
-                                    <a href="/gestionar/empresas" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de empresas</span>
-                                    </a>
-                                </li>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="/inicio" class="nav-item nav-link active">Inicio</a>
+                    <a href="/gestionar/empresas" class="nav-item nav-link">Empresas</a>
+                    <a href="/gestionar/usuarios" class="nav-item nav-link">Usuarios</a>
+                    <a href="/gestionar/transacciones/empresas" class="nav-item nav-link">Transacciones</a>
+                </div>
+<!--                <div class="navbar-nav ms-auto">-->
+<!--                    <a href="#" class="nav-item nav-link">Login</a>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </nav>
 
+            <div class="text-center m-5">
 
-                                <li class="nav-item">
-                                    <a href="/gestionar/transacciones/empresas" class="nav-link align-middle px-0">
-                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de ingresos y gastos</span>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="/gestionar/usuarios" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de usuarios</span>
-                                    </a>
-                                </li>
-
-
-
-                            </ul>
-
-                        </div>
-                    </div>
-                    <div class="col py-3 d-flex justify-content-evenly align-items-center text-center ">
+                    <div  class="d-flex justify-content-evenly  align-items-center text-center ">
 
                         <div class="card d-flex align-items-center" style="width: 18rem;">
                             <img  height="156" style="width: 156px;"  src="/img/3d-fluency-shop.png" class="card-img-top img-d" alt="empresa"/>
@@ -73,7 +64,6 @@
                                 <a href="/gestionar/transacciones/empresas" class="btn  btn-primary">Gestionar</a>
                             </div>
                         </div>
-
 
 
                     </div>
