@@ -6,47 +6,38 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/982f3bb3ad.js" crossorigin="anonymous"></script>
     <title>Usuarios</title>
 </head>
 <body>
   <main>
-    <div class="container-fluid">
-      <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <a href="/inicio" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-              <span class="fs-5 d-none d-sm-inline">Menu</span>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a href="/" class="navbar-brand">
+              <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
             </a>
-            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-              <li class="nav-item">
-                <a href="/gestionar/empresas" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de empresas</span>
-                </a>
-              </li>
 
-
-              <li class="nav-item">
-                <a href="/gestionar/transacciones/empresas" class="nav-link align-middle px-0">
-                  <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de ingresos y gastos</span>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="/gestionar/usuarios" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de usuarios</span>
-                </a>
-              </li>
-
-
-            </ul>
-
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <div class="navbar-nav">
+                <a href="/inicio" class="nav-item nav-link"> <i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
+                <a href="/gestionar/usuarios" class="nav-item nav-link active"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
+                <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"></i> Transacciones</a>
+              </div>
+              <div class="navbar-nav ms-auto">
+                <a  th:href="@{/logout}" class="nav-item nav-link"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col py-3 text-center table-responsive">
+        </nav>
+        <div class="container my-3 text-center table-responsive">
 <!--          <a href="/gestionar/usuarios/nuevo" class="btn btn-warning">Nuevo usuario</a>-->
           <div sec:authorize="isAuthenticated()">
           <table class="table table-dark caption-top table-striped">
-            <caption>Lista de usuarios</caption>
+            <caption>Lista de usuarios registrados</caption>
             <thead>
             <tr>
               <th scope="col">id</th>
@@ -77,10 +68,10 @@
               <td th:text="${user.createdAt }"></td>
               <div th:switch="${usuario.role.name()}">
                 <td th:case="'Admin'" class="d-flex justify-content-evenly align-items-center">
-                  <a th:href="@{/gestionar/usuarios/editar/{id}(id=${user.id})}" class=" btn text-light rounded-bottom  btn-info"> Editar </a>
-                  <form th:action="@{/users/{id}(id=${user.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> Eliminar </button> </form>
+                  <a th:href="@{/gestionar/usuarios/editar/{id}(id=${user.id})}" class=" btn text-light rounded-bottom  btn-info"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                  <form th:action="@{/users/{id}(id=${user.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> <i class="fa-regular fa-trash-can"></i> </button> </form>
                 </td>
-                <td th:case="*" th:text="'No disponible'"></td>
+                <td th:case="*" ><i class="fa-solid fa-lock"></i> No disponible</td>
               </div>
 
             </tr>
@@ -89,9 +80,6 @@
           </table>
           </div>
         </div>
-      </div>
-    </div>
-
 
   </main>
 </body>

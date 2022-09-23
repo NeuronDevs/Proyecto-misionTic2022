@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/982f3bb3ad.js" crossorigin="anonymous"></script>
     <title>Inicio</title>
 </head>
 <body>
@@ -24,13 +25,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="/inicio" class="nav-item nav-link active">Inicio</a>
-                    <a href="/gestionar/empresas" class="nav-item nav-link">Empresas</a>
-                    <a href="/gestionar/usuarios" class="nav-item nav-link">Usuarios</a>
-                    <a href="/gestionar/transacciones/empresas" class="nav-item nav-link">Transacciones</a>
+                    <a href="/inicio" class="nav-item nav-link active"> <i class="fa-solid fa-house"></i> Inicio</a>
+                    <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
+                    <a href="/gestionar/usuarios" class="nav-item nav-link"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
+                    <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"> </i>Transacciones</a>
                 </div>
                 <div class="navbar-nav ms-auto">
-                    <a  th:href="@{/logout}" class="nav-item nav-link">Logout</a>
+                    <a  th:href="@{/logout}" class="nav-item nav-link"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -75,5 +76,6 @@
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 
 </html>
