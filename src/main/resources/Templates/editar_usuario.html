@@ -59,7 +59,7 @@
 
           <div class="mb-3">
             <label for="emailUsuario" class="form-label">Correo electronico</label>
-            <input th:field="*{email}" type="email" class="form-control" id="emailUsuario" aria-describedby="emailHelp">
+            <input readonly th:field="*{email}" type="email" class="form-control" id="emailUsuario" aria-describedby="emailHelp">
           </div>
 
           <!--
@@ -72,8 +72,8 @@
           <div class="mb-3">
             <label for="roleUsuario" class="form-label">Seleccionar role </label>
             <select th:field="*{role}" id="roleUsuario" class="form-select" aria-label="Default select example">
-              <option th:selected th:value="'Admin'" th:text="Operario"></option>
-              <option th:value="'Operario'" th:text="Admin"></option>
+              <option  th:value="'Admin'" th:text="Admin"></option>
+              <option th:selected th:value="'Operario'" th:text="Operario"></option>
             </select>
           </div>
 

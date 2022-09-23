@@ -36,10 +36,25 @@ public class User {
     @OneToMany(mappedBy="user")
     @JsonIgnore
     private List<Transaction> transactions;
+
     @Column
     private LocalDate createdAt;
 
+    @Column
+    private String image;
+
+    @Column(unique = true)
+    private String auth0Id;
+
     public User() {
+    }
+
+    public User(String name, String email, String image, String auth0Id) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.image = image;
+        this.auth0Id = auth0Id;
     }
 
     public void setUser(String name, String email, Profile profile, Enum_RoleName role, Enterprise enterprise) {
@@ -48,6 +63,16 @@ public class User {
         this.profile = profile;
         this.role = role;
         this.enterprise = enterprise;
+    }
+
+    public User(String name, String email, String image, String auth0Id, LocalDate createdAt) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.image = image;
+        this.auth0Id = auth0Id;
+        this.role = Enum_RoleName.Operario;
+        this.createdAt = createdAt;
     }
 
 }

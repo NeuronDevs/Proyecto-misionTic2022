@@ -31,20 +31,28 @@ public class FrontController {
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal){
         if (principal!=null){
-            Usuario usuario = this.usuarioService.getOrCreateUser(principal.getClaims());
+            User usuario = this.userService.getOrCreateUser(principal.getClaims());
             model.addAttribute("usuario",usuario);
         }
         return "index";
     }
+
     @GetMapping("/inicio")
     public String inicio(){
         return "inicio";
     }
 
     @GetMapping("/gestionar/usuarios")
-    public String usuario(Model model){
+    public String usuario(Model model,  @AuthenticationPrincipal OidcUser principal){
+
+        if (principal!=null){
+            User usuario = this.userService.getOrCreateUser(principal.getClaims());
+            model.addAttribute("usuario",usuario);
+        }
+
         List<User> users =  this.userService.getUsers();
         model.addAttribute("users", users);
+
         return "usuarios";
     }
 

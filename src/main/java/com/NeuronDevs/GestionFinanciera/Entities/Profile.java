@@ -29,8 +29,8 @@ public class Profile {
     @Column
     private LocalDate updateAt;
 
-    public Profile(Long user_id, LocalDate createdAt) {
-        this.user_id = user_id;
+    public Profile(User user, LocalDate createdAt) {
+        this.user = user;
         this.createdAt = createdAt;
     }
 

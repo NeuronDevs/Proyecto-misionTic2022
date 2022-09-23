@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -43,7 +43,8 @@
           </div>
         </div>
         <div class="col py-3 text-center table-responsive">
-          <a href="/gestionar/usuarios/nuevo" class="btn btn-warning">Nuevo usuario</a>
+<!--          <a href="/gestionar/usuarios/nuevo" class="btn btn-warning">Nuevo usuario</a>-->
+          <div sec:authorize="isAuthenticated()">
           <table class="table table-dark caption-top table-striped">
             <caption>Lista de usuarios</caption>
             <thead>
@@ -52,25 +53,41 @@
               <th scope="col">Nombre</th>
               <th scope="col">Correo</th>
               <th scope="col">Rol</th>
+              <th scope="col">Empresa</th>
               <th scope="col">Creacion</th>
               <th scope="col">Acciones</th>
+<!--              <div th:if="${usuario.role == 'Admin'}">-->
+<!--                <th  scope="col">Acciones</th>-->
+<!--              </div>-->
+<!--              <div th:unless="${user.role == 'Operario'}">-->
+<!--                <th  scope="col">Acciones</th>-->
+<!--              </div>-->
+
             </tr>
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
               <th scope="row" th:text="${user.id}"></th>
-              <td th:text="${user.name}"></td>
+              <td th:text="${user?.name} ?: 'Sin nombre'"></td>
               <td th:text="${user.email}"></td>
               <td th:text="${user.role}"></td>
+<!--              <td th:text="${user.enterprise?.name}"></td>-->
+              <td th:text="${user.enterprise?.name} ?: 'Sin empresa'"></td>
+
               <td th:text="${user.createdAt }"></td>
-              <td class="d-flex justify-content-evenly align-items-center">
-                <a th:href="@{/gestionar/usuarios/editar/{id}(id=${user.id})}" class=" btn text-light rounded-bottom  btn-info"> Editar </a>
-                <form th:action="@{/users/{id}(id=${user.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> Eliminar </button> </form>
-              </td>
+              <div th:switch="${usuario.role.name()}">
+                <td th:case="'Admin'" class="d-flex justify-content-evenly align-items-center">
+                  <a th:href="@{/gestionar/usuarios/editar/{id}(id=${user.id})}" class=" btn text-light rounded-bottom  btn-info"> Editar </a>
+                  <form th:action="@{/users/{id}(id=${user.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> Eliminar </button> </form>
+                </td>
+                <td th:case="*" th:text="'No disponible'"></td>
+              </div>
+
             </tr>
 
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>
