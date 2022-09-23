@@ -11,34 +11,34 @@
 </head>
 <body>
   <main>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <a href="/" class="navbar-brand">
-              <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
-            </a>
-
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              <div class="navbar-nav">
-                <a href="/inicio" class="nav-item nav-link"> <i class="fa-solid fa-house"></i> Inicio</a>
-                <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
-                <a href="/gestionar/usuarios" class="nav-item nav-link active"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
-                <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"></i> Transacciones</a>
-              </div>
-              <div class="navbar-nav ms-auto">
-                <a  th:href="@{/logout}" class="nav-item nav-link"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <div class="container my-3 text-center table-responsive">
-<!--          <a href="/gestionar/usuarios/nuevo" class="btn btn-warning">Nuevo usuario</a>-->
           <div sec:authorize="isAuthenticated()">
-          <table class="table table-dark caption-top table-striped">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a href="/" class="navbar-brand">
+                  <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
+                </a>
+
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <div class="navbar-nav">
+                    <a href="/inicio" class="nav-item nav-link"> <i class="fa-solid fa-house"></i> Inicio</a>
+                    <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
+                    <a href="/gestionar/usuarios" class="nav-item nav-link active"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
+                    <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"></i> Transacciones</a>
+                  </div>
+                  <div class="navbar-nav ms-auto">
+                    <a  th:href="@{/logout}" class="nav-item nav-link"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            <div class="container my-3 text-center table-responsive">
+          <!--          <a href="/gestionar/usuarios/nuevo" class="btn btn-warning">Nuevo usuario</a>-->
+            <table class="table caption-top table-striped shadow-sm table-hover  table-borderless">
             <caption>Lista de usuarios registrados</caption>
-            <thead>
+            <thead class="table-primary ">
             <tr>
               <th scope="col">id</th>
               <th scope="col">Nombre</th>
@@ -80,6 +80,11 @@
           </table>
           </div>
         </div>
+    <div class="container text-center my-5" sec:authorize="!isAuthenticated()">
+      <img src="/img/3d-fluency-close-window.png" alt="Imagen robot"/>
+      <h4>No estas autenticado!</h4>
+      <a th:href="@{/oauth2/authorization/auth0}" class="btn btn-primary btn-lg px-3">Ingresar</a>
+    </div>
 
   </main>
 </body>
