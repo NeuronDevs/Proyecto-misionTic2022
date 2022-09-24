@@ -6,9 +6,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -29,6 +31,13 @@ public class FrontEnterpriseController {
     public String nueva_empresa(Model model){
         model.addAttribute("enterprise",new Enterprise());
         return "nueva_empresa";
+
+    }
+    @GetMapping("/gestionar/empresas/editar/{id}")
+    public String empresa(Model model,@PathVariable("id") Long id) throws Exception {
+        Optional<Enterprise> enterprise = this.enterpriseService.getEnterprise(id);
+        model.addAttribute("enterprise", enterprise);
+        return "editar_empresa";
     }
 
 }

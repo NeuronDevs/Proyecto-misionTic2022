@@ -1,7 +1,6 @@
 package com.NeuronDevs.GestionFinanciera.Controllers;
 
 import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
-import com.NeuronDevs.GestionFinanciera.Entities.User;
 import com.NeuronDevs.GestionFinanciera.Services.EnterpriseService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -51,9 +50,11 @@ public class EnterpriseController {
     }
 
     //Para actualizar una empresa
-    @PatchMapping("/{id}")
-    public Enterprise updateEnterprise(@RequestBody Enterprise enterprise, @PathVariable Long id) throws Exception {
-        return this.enterpriseService.updateEnterprise(enterprise, id);
+    @PatchMapping("")
+    public RedirectView updateEnterprise(@ModelAttribute Enterprise enterprise, Model model) throws Exception {
+        model.addAttribute(enterprise);
+    this.enterpriseService.updateEnterprise(enterprise,enterprise.getId());
+    return new RedirectView("/gestionar/enterprises");
     }
     //Para borrar una empresa
     @DeleteMapping("/{id}")
@@ -61,5 +62,6 @@ public class EnterpriseController {
         this.enterpriseService.deleteEnterprise(id);
         return new RedirectView("/gestionar/empresas");
     }
+
 
 }
