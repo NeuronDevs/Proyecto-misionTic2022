@@ -54,7 +54,7 @@ public class EnterpriseController {
     public RedirectView updateEnterprise(@ModelAttribute Enterprise enterprise, Model model) throws Exception {
         model.addAttribute(enterprise);
     this.enterpriseService.updateEnterprise(enterprise,enterprise.getId());
-    return new RedirectView("/gestionar/enterprises");
+    return new RedirectView("/gestionar/empresas");
     }
     //Para borrar una empresa
     @DeleteMapping("/{id}")
