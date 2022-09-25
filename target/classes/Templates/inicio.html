@@ -16,27 +16,22 @@
 <main style="height: 100vh">
     <div sec:authorize="isAuthenticated()">
 
-<<<<<<< HEAD
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-=======
-    <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-success shadow-sm rounded-bottom">
-        <div class="container-fluid px-5">
->>>>>>> 6a5318d9bc620220e260df03a236553e312f5060
-            <a href="/" class="navbar-brand">
-                <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
-            </a>
+        <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-success shadow-sm rounded-bottom">
+            <div class="container-fluid px-5">
+                <a href="/" class="navbar-brand">
+                    <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
+                </a>
 
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav">
-                    <a href="/inicio" class="nav-item nav-link active"> <i class="fa-solid fa-house"></i> Inicio</a>
-                    <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
-                    <a href="/gestionar/usuarios" class="nav-item nav-link"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
-                    <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"> </i>Transacciones</a>
-                </div>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="/inicio" class="nav-item nav-link active"> <i class="fa-solid fa-house"></i> Inicio</a>
+                        <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
+                        <a href="/gestionar/usuarios" class="nav-item nav-link"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
+                        <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"> </i>Transacciones</a>
+                    </div>
 
                     <ul class="px-5 navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
                         <li class="nav-item nav-link dropdown">
@@ -51,43 +46,43 @@
                             </ul>
                         </li>
                     </ul>
-            </div>
-        </div>
-    </nav>
-
-            <div class="text-center m-5">
-
-                    <div  class="d-flex justify-content-evenly  align-items-center text-center ">
-
-                        <div class="card d-flex align-items-center" style="width: 18rem;">
-                            <img  height="156" style="width: 156px;"  src="/img/3d-fluency-shop.png" class="card-img-top img-d" alt="empresa"/>
-                            <div class="card-body">
-                                <h5 class="card-title">Sistema de gestión de empresas</h5>
-                                <a href="/gestionar/empresas" class="btn  btn-primary">Gestionar</a>
-                            </div>
-                        </div>
-
-
-                        <div class="card d-flex align-items-center " style="width: 18rem;">
-                            <img  height="156" style="width: 156px;"  src="/img/3d-fluency-contacts.png" class="card-img-top img-d" alt="usuarios"/>
-                            <div class="card-body">
-                                <h5 class="card-title">Sistema de gestión de usuarios</h5>
-                                <a href="/gestionar/usuarios" class="btn  btn-primary">Gestionar</a>
-                            </div>
-                        </div>
-
-                        <div class="card d-flex align-items-center" style="width: 18rem;">
-                            <img height="156" style="width: 156px;" src="/img/3d-fluency-coin-wallet.png" class="card-img-top img-d" alt="ingresos"/>
-                            <div class="card-body">
-                                <h5 class="card-title">Sistema de gestión de ingresos y gastos</h5>
-                                <a href="/gestionar/transacciones/empresas" class="btn  btn-primary">Gestionar</a>
-                            </div>
-                        </div>
-
-
-                    </div>
                 </div>
             </div>
+        </nav>
+
+        <div class="text-center m-5">
+
+            <div  class="d-flex justify-content-evenly  align-items-center text-center ">
+
+                <div class="card d-flex align-items-center" style="width: 18rem;">
+                    <img  height="156" style="width: 156px;"  src="/img/3d-fluency-shop.png" class="card-img-top img-d" alt="empresa"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Sistema de gestión de empresas</h5>
+                        <a href="/gestionar/empresas" class="btn  btn-primary">Gestionar</a>
+                    </div>
+                </div>
+
+
+                <div class="card d-flex align-items-center " style="width: 18rem;">
+                    <img  height="156" style="width: 156px;"  src="/img/3d-fluency-contacts.png" class="card-img-top img-d" alt="usuarios"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Sistema de gestión de usuarios</h5>
+                        <a href="/gestionar/usuarios" class="btn  btn-primary">Gestionar</a>
+                    </div>
+                </div>
+
+                <div class="card d-flex align-items-center" style="width: 18rem;">
+                    <img height="156" style="width: 156px;" src="/img/3d-fluency-coin-wallet.png" class="card-img-top img-d" alt="ingresos"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Sistema de gestión de ingresos y gastos</h5>
+                        <a href="/gestionar/transacciones/empresas" class="btn  btn-primary">Gestionar</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
     </div>
     <div class="container text-center my-5" sec:authorize="!isAuthenticated()">
         <img src="/img/3d-fluency-close-window.png" alt="Imagen robot"/>
