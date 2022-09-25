@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -10,6 +10,14 @@
 </head>
 <body>
 <main>
+  <div sec:authorize="isAuthenticated()">
+    <div th:switch="${usuario.role?.name()}">
+      <div class="container text-center my-5" th:case="null">
+        <img src="/img/business-3d-robot-assistant-sleeping.png" alt="Imagen robot"/>
+        <h4>No tiene acceso, Espere que un administrador le asigne un Rol!!</h4>
+        <a th:href="@{/inicio}" class="btn btn-primary btn-lg px-3">Regresar</a>
+      </div>
+      <div th:case="*">
   <div class="container-fluid">
     <div class="row flex-nowrap">
       <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
@@ -79,6 +87,13 @@
 
       </div>
     </div>
+  </div>
+  </div>
+    </div>
+  <div class="container text-center my-5" sec:authorize="!isAuthenticated()">
+    <img src="/img/3d-fluency-close-window.png" alt="Imagen robot"/>
+    <h4>No estas autenticado!</h4>
+    <a th:href="@{/oauth2/authorization/auth0}" class="btn btn-primary btn-lg px-3">Ingresar</a>
   </div>
 
 

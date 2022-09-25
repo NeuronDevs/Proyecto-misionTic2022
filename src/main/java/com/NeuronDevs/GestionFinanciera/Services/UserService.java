@@ -86,17 +86,6 @@ public class UserService {
         return "usuario eliminado";
     }
 
-    public boolean isAdmin(Long id) throws Exception {
-        User user = this.userRepository.findById(id).orElseThrow(
-                () -> new Exception("Usuario no existe")
-        );
-
-        if( user.getRole() == Enum_RoleName.Admin){
-            return true;
-        }
-        return false;
-    }
-
 
     public User getOrCreateUser(Map<String,Object> userData){
 

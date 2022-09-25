@@ -12,6 +12,14 @@
 <body>
   <main>
           <div sec:authorize="isAuthenticated()">
+            <div th:switch="${usuario.role?.name()}">
+              <div class="container text-center my-5" th:case="null">
+                <img src="/img/business-3d-robot-assistant-sleeping.png" alt="Imagen robot"/>
+                <h4>No tiene acceso, Espere que un administrador le asigne un Rol!!</h4>
+                <a th:href="@{/inicio}" class="btn btn-primary btn-lg px-3">Regresar</a>
+              </div>
+              <div th:case="*">
+
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
               <div class="container-fluid">
                 <a href="/" class="navbar-brand">
@@ -61,17 +69,18 @@
               <th scope="row" th:text="${user.id}"></th>
               <td th:text="${user?.name} ?: 'Sin nombre'"></td>
               <td th:text="${user.email}"></td>
-              <td th:text="${user.role}"></td>
+              <td th:text="${user?.role}"></td>
 <!--              <td th:text="${user.enterprise?.name}"></td>-->
               <td th:text="${user.enterprise?.name} ?: 'Sin empresa'"></td>
 
               <td th:text="${user.createdAt }"></td>
-              <div th:switch="${usuario.role.name()}">
+              <div th:switch="${usuario.role?.name()}">
                 <td th:case="'Admin'" class="d-flex justify-content-evenly align-items-center">
                   <a th:href="@{/gestionar/usuarios/editar/{id}(id=${user.id})}" class=" btn text-light rounded-bottom  btn-info"> <i class="fa-solid fa-pen-to-square"></i> </a>
                   <form th:action="@{/users/{id}(id=${user.id})}" th:method="delete"> <button type="submit" class=" btn rounded-bottom btn-danger"> <i class="fa-regular fa-trash-can"></i> </button> </form>
                 </td>
-                <td th:case="*" > <i class="fa-solid fa-lock"></i> No disponible</td>
+                <td th:case="'Operario'" > <i class="fa-solid fa-lock"></i> No disponible</td>
+                <td th:case="*" > <i class="fa-solid fa-lock"></i> No </td>
               </div>
 
             </tr>
@@ -79,6 +88,8 @@
             </tbody>
           </table>
           </div>
+
+              </div>
         </div>
     <div class="container text-center my-5" sec:authorize="!isAuthenticated()">
       <img src="/img/3d-fluency-close-window.png" alt="Imagen robot"/>

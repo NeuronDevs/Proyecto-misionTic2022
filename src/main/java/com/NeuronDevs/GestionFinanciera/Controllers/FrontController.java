@@ -38,7 +38,8 @@ public class FrontController {
     }
 
     @GetMapping("/inicio")
-    public String inicio(){
+    public String inicio(Model model){
+
         return "inicio";
     }
 
@@ -48,27 +49,41 @@ public class FrontController {
         if (principal!=null){
             User usuario = this.userService.getOrCreateUser(principal.getClaims());
             model.addAttribute("usuario",usuario);
+            List<User> users =  this.userService.getUsers();
+            model.addAttribute("users", users);
         }
 
-        List<User> users =  this.userService.getUsers();
-        model.addAttribute("users", users);
+
 
         return "usuarios";
     }
 
     @GetMapping("/gestionar/usuarios/nuevo")
-    public String nuevo_usuario(Model model){
-        List<Enterprise> enterprises =  this.enterpriseService.consultarEnterprise();
-        model.addAttribute("enterprises", enterprises);
-        model.addAttribute("user",new User());
+    public String nuevo_usuario(Model model, @AuthenticationPrincipal OidcUser principal){
+
+        if (principal!=null){
+            User usuario = this.userService.getOrCreateUser(principal.getClaims());
+            model.addAttribute("usuario",usuario);
+            List<Enterprise> enterprises =  this.enterpriseService.consultarEnterprise();
+            model.addAttribute("enterprises", enterprises);
+            model.addAttribute("user",new User());
+        }
+
         return "nuevo_usuario";
     }
     @GetMapping("/gestionar/usuarios/editar/{id}")
-    public String nuevo_usuario(Model model, @PathVariable("id") Long id) throws Exception {
-        Optional<User> user = this.userService.getUser(id);
-        List<Enterprise> enterprises =  this.enterpriseService.consultarEnterprise();
-        model.addAttribute("enterprises", enterprises);
-        model.addAttribute("user", user);
+    public String nuevo_usuario(Model model, @PathVariable("id") Long id, @AuthenticationPrincipal OidcUser principal) throws Exception {
+
+        if (principal!=null){
+            User usuario = this.userService.getOrCreateUser(principal.getClaims());
+            model.addAttribute("usuario",usuario);
+            Optional<User> user = this.userService.getUser(id);
+            List<Enterprise> enterprises =  this.enterpriseService.consultarEnterprise();
+            model.addAttribute("enterprises", enterprises);
+            model.addAttribute("user", user);
+        }
+
+
         return "editar_usuario";
     }
 
