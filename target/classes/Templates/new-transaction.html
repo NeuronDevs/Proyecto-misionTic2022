@@ -1,65 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <title>Transacciones</title>
+  <script src="https://kit.fontawesome.com/982f3bb3ad.js" crossorigin="anonymous"></script>
+  <title>Seleccionar empresa</title>
 </head>
 <body>
 <main>
-  <div class="container-fluid">
-    <div class="row flex-nowrap">
-      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-          <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <span class="fs-5 d-none d-sm-inline">Menu</span>
-          </a>
-          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-            <li class="nav-item">
-              <a href="#" class="nav-link align-middle px-0">
-                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de ingresos y gastos</span>
-              </a>
-            </li>
+  <div sec:authorize="isAuthenticated()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand">
+          <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
+        </a>
 
-            <li>
-              <a href="#" class="nav-link px-0 align-middle">
-                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de usuarios</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="nav-link px-0 align-middle">
-                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline text-light">Sistema de gestión de empresas</span>
-              </a>
-            </li>
-
-          </ul>
-
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav">
+            <a href="/inicio" class="nav-item nav-link"> <i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
+            <a href="/gestionar/usuarios" class="nav-item nav-link active"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
+            <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"></i> Transacciones</a>
+          </div>
+          <div class="navbar-nav ms-auto">
+            <a  th:href="@{/logout}" class="nav-item nav-link"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+          </div>
         </div>
       </div>
-      <!--<div class="col py-3 text-center table-responsive">-->
-      <div class="px-4 py-5 text-center d-flex flex-column align-items-center">
-        <!--<h1 th:text="${transaction.enterprise.id}"></h1>-->
-        <h1>Nueva Transacción</h1>
-        <h2 th:text="${transaction.enterprise.name}" ></h2>
-        <form th:action="@{/transactions/} + ${id} + @{/movements/new}" th:method="post" th:object="${transaction}" class="d-flex-column gap-3 align-items-center">
-          <input th:field="*{concept}" type="text" class="form-control" placeholder="Concepto"/>
-          <input th:field="*{amount}" type="text" class="form-control" placeholder="cantidad"/>
-          <input th:field="*{enterprise.id}" type="hidden" />
-          <input th:field="*{enterprise.name}" type="hidden" />
-          <button class="btn btn-primary" type="submit">Guardar Transacción</button>
+    </nav>
+    <div class="container my-3 d-flex flex-column align-items-center text-center table-responsive">
+      <form th:action="@{/transactions/} + ${id} + @{/movements/new}" th:method="post" th:object="${transaction}">
+        <h2>Nueva Transacción</h2>
+        <ul><i class="fa-solid fa-money-from-bracket"></i></ul>
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Empresa</label>
+          <input readonly th:value="${transaction.enterprise.name}" type="text" class="form-control" id="empresa"/>
+        </div>
 
-        </form>
-      </div>
+        <div class="mb-3">
+          <label for="concepto" class="form-label">Concepto</label>
+          <input th:field="*{concept}" type="text" class="form-control" placeholder="Concepto" id="concepto"/>
+        </div>
+
+        <div class="mb-3">
+          <label for="amount" class="form-label">Cantidad</label>
+          <input th:field="*{amount}" type="text" class="form-control" placeholder="cantidad" id="amount"/>
+        </div>
+        <input th:field="*{enterprise.id}" type="hidden" />
+        <input th:field="*{enterprise.name}" type="hidden" />
+        <button class="btn btn-primary" type="submit">Guardar Transacci&oacute;n</button>
+      </form>
+
     </div>
   </div>
-
+  <div class="container text-center my-5" sec:authorize="!isAuthenticated()">
+    <img src="/img/3d-fluency-close-window.png" alt="Imagen robot"/>
+    <h4>No estas autenticado!</h4>
+    <a th:href="@{/oauth2/authorization/auth0}" class="btn btn-primary btn-lg px-3">Ingresar</a>
+  </div>
 
 </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 </html>

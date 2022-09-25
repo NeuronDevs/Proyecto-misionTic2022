@@ -49,6 +49,7 @@ public class FrontTransactionController {
         if (principal!=null){
             Transaction transaction=new Transaction();
             transaction.setEnterprise(this.enterpriseService.getEnterprise(id).get());
+            model.addAttribute("usuario",this.userService.getOrCreateUser(principal.getClaims()));
             model.addAttribute("transaction",transaction);
             return "new-transaction";
         }else{
@@ -60,6 +61,7 @@ public class FrontTransactionController {
         if(principal!=null) {
             Transaction transaction = this.transactionService.getTransaction(id_e, id_t).get();
             transaction.setEnterprise(this.enterpriseService.getEnterprise(id_e).get());
+            model.addAttribute("usuario",this.userService.getOrCreateUser(principal.getClaims()));
             model.addAttribute("transaction", transaction);
         }
         return "update-transaction";
