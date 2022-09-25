@@ -46,17 +46,25 @@
       </div>
     </nav>
     <div class="container my-3 d-flex flex-column align-items-center text-center table-responsive">
-      <form th:action="@{/transactions/} + ${id} + @{/movements/new}" th:method="post" th:object="${transaction}">
+      <form th:action="@{/transactions/} + ${id} + @{/movements/new}" th:method="post" th:object="${transaction}" id="fTrans" onsubmit="fTrans.amount.value=Math.abs(fTrans.amount.value)*fTrans.type_transaction.value;return true;">
         <h2>Nueva Transacción</h2>
         <ul><i class="fa-solid fa-money-from-bracket"></i></ul>
         <div class="mb-3">
           <label for="empresa" class="form-label">Empresa</label>
           <input readonly th:value="${transaction.enterprise.name}" type="text" class="form-control" id="empresa"/>
         </div>
-
         <div class="mb-3">
           <label for="concepto" class="form-label">Concepto</label>
           <input th:field="*{concept}" type="text" class="form-control" placeholder="Concepto" id="concepto"/>
+        </div>
+        <div class="mb-3">
+          <script language="javascript">
+              getElementbyId("ingreso")*getElementById("
+          </script>
+          <label for="ingreso" class="form-label">Ingreso</label>
+          <input  type="radio" name="type_transaction" value="1" id="ingreso" checked />
+          <label for="egreso" class="form-label">Egreso</label>
+          <input  type="radio" name="type_transaction" value="-1" id="egreso" />
         </div>
 
         <div class="mb-3">

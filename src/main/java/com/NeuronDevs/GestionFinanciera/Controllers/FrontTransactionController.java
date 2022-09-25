@@ -35,14 +35,15 @@ public class FrontTransactionController {
         if(principal!=null){
             List<Enterprise> enterprises;
             user=this.userService.getOrCreateUser(principal.getClaims());
-            if(user.getRole()== Enum_RoleName.Admin){
+            /*if(user.getRole()== Enum_RoleName.Admin){
                 enterprises =  this.enterpriseService.consultarEnterprise();
             }else{
                 enterprises= new ArrayList<Enterprise>();
                 if(user.getEnterprise()!=null) {
                     enterprises.add(this.enterpriseService.getEnterprise(user.getEnterprise().getId()).get());
                 }
-            }
+            }*/
+            enterprises =  this.enterpriseService.consultarEnterprise();
             model.addAttribute("usuario", user);
             model.addAttribute("enterprises", enterprises);
             return "enterprises-transactions";
@@ -57,17 +58,17 @@ public class FrontTransactionController {
             User user= this.userService.getOrCreateUser(principal.getClaims());
             model.addAttribute("usuario",user);
             //Si es operador muestra siempre la empresa en la que está registrado
-            if(user.getRole()==Enum_RoleName.Admin){
+            //if(user.getRole()==Enum_RoleName.Admin){
                 id_enterprise=id;
                 List<Transaction> transactions =  this.transactionService.getTransactions(id_enterprise);
                 model.addAttribute("enterprise_name",this.enterpriseService.getEnterprise(id_enterprise).get().getName());
                 model.addAttribute("transactions", transactions);
-            }else if(user.getEnterprise()!=null){
+            /*}else if(user.getEnterprise()!=null){
                 id_enterprise=user.getEnterprise().getId();
                 List<Transaction> transactions =  this.transactionService.getTransactions(id_enterprise,user.getId());
                 model.addAttribute("enterprise_name",this.enterpriseService.getEnterprise(id_enterprise).get().getName());
                 model.addAttribute("transactions", transactions);
-            }
+            }*/
         }
         return "transactions";
     }

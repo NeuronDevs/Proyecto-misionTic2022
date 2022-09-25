@@ -54,9 +54,12 @@
         </nav>
 
         <div class="container my-3 text-center table-responsive">
-      <a th:href="${id} + @{/nueva}" class=" btn text-light rounded-bottom  btn-info"><i class="fa-sharp fa-solid fa-plus"></i>Nueva transacción</a>
-      <table class="table caption-top table-striped shadow-sm table-hover  table-borderless">
-        <caption th:text="@{Transacciones para la empresa } + ${enterprise_name}"></caption>
+        <div  th:switch="${usuario.role?.name()}">
+          <!-- OJO: Se cambio por el requerimiento de Enrique en la penultima revisión-->
+          <a th:case="'Admin'" th:href="${id} + @{/nueva}" class=" btn text-light rounded-bottom  btn-info"><i class="fa-sharp fa-solid fa-plus"></i>Nueva transacción</a>
+        </div>
+        <table class="table caption-top table-striped shadow-sm table-hover  table-borderless">
+        <caption th:text="@{Transacciones para la empresa &nbsp; } + ${enterprise_name}"></caption>
         <thead class="table-primary ">
         <tr>
           <th scope="col">Id</th>
