@@ -25,6 +25,9 @@ public class TransactionService {
     public List<Transaction> getTransactions(Long id){
         return this.transactionRepository.findAllByEnterpriseId(id);
     }
+    public List<Transaction> getTransactions(Long id_e,Long id_u){
+        return this.transactionRepository.findAllByEnterpriseIdAndUserId(id_e,id_u);
+    }
 
     public Optional<Transaction> getTransaction(Long id_e,Long id_t) throws Exception {
         Transaction transaction = this.transactionRepository.findByEnterpriseIdAndId(id_e,id_t).orElseThrow(
