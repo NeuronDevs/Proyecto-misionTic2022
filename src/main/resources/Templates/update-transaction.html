@@ -43,12 +43,13 @@
       <!--<div class="col py-3 text-center table-responsive">-->
       <div class="px-4 py-5 text-center d-flex flex-column align-items-center">
         <!--<h1 th:text="${transaction.enterprise.id}"></h1>-->
-        <h1>Nueva Transacción</h1>
+        <h1>Actualizando transacción</h1>
         <h2 th:text="${transaction.enterprise.name}" ></h2>
-        <form th:action="@{/transactions/} + ${id} + @{/movements/new}" th:method="post" th:object="${transaction}" class="d-flex-column gap-3 align-items-center">
+        <form th:action="@{/transactions/} + ${id_e} + @{/movements/} + ${transaction.id}" th:method="patch" th:object="${transaction}" class="d-flex-column gap-3 align-items-center">
           <input th:field="*{concept}" type="text" class="form-control" placeholder="Concepto"/>
           <input th:field="*{amount}" type="text" class="form-control" placeholder="cantidad"/>
           <input th:field="*{enterprise.id}" type="hidden" />
+          <input th:field="*{user.id}" type="hidden" />
           <input th:field="*{enterprise.name}" type="hidden" />
           <button class="btn btn-primary" type="submit">Guardar Transacción</button>
 
