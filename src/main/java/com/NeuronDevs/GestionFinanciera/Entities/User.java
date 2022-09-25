@@ -71,7 +71,6 @@ public class User {
         this.email = email;
         this.image = image;
         this.auth0Id = auth0Id;
-        this.role = Enum_RoleName.Operario;
         this.createdAt = createdAt;
     }
 

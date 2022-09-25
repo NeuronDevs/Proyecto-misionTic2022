@@ -38,7 +38,8 @@ public class FrontController {
     }
 
     @GetMapping("/inicio")
-    public String inicio(){
+    public String inicio(Model model){
+
         return "inicio";
     }
 
