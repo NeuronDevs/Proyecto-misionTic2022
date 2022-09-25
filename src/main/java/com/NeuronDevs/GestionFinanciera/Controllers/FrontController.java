@@ -38,7 +38,11 @@ public class FrontController {
     }
 
     @GetMapping("/inicio")
-    public String inicio(Model model){
+    public String inicio(Model model, @AuthenticationPrincipal OidcUser principal){
+        if (principal!=null){
+            User usuario = this.userService.getOrCreateUser(principal.getClaims());
+            model.addAttribute("usuario",usuario);
+        }
 
         return "inicio";
     }

@@ -16,8 +16,13 @@
 <main style="height: 100vh">
     <div sec:authorize="isAuthenticated()">
 
+<<<<<<< HEAD
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
+=======
+    <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-success shadow-sm rounded-bottom">
+        <div class="container-fluid px-5">
+>>>>>>> 6a5318d9bc620220e260df03a236553e312f5060
             <a href="/" class="navbar-brand">
                 <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
             </a>
@@ -32,9 +37,20 @@
                     <a href="/gestionar/usuarios" class="nav-item nav-link"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
                     <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"> </i>Transacciones</a>
                 </div>
-                <div class="navbar-nav ms-auto">
-                    <a  th:href="@{/logout}" class="nav-item nav-link"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-                </div>
+
+                    <ul class="px-5 navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+                        <li class="nav-item nav-link dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img height="50px"  th:src="${usuario?.image} ?: 'https://illumesense.com/resources/illumesense/style/img/website/profile-picture-blanks/male-profile.jpg' " alt="profile img">
+                            </a>
+                            <ul p-2 class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="nav-item nav-link text-dark" th:text="${usuario?.name} ?: 'Usuario' "></li>
+                                <li class="nav-item nav-link text-dark" th:text="${usuario?.role?.name()} ?: 'Sin rol' "></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>  <a  th:href="@{/logout}" class="nav-item nav-link text-dark"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
             </div>
         </div>
     </nav>
