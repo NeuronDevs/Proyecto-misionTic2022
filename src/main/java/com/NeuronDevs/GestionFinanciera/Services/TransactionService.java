@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,8 +42,7 @@ public class TransactionService {
                 () -> new Exception("Usuario no existe ")
         );
         new_transaction.setUser(user);
-
-        transaction.setTransaction(new_transaction.getConcept(),new_transaction.getAmount(),new_transaction.getUser(), new_transaction.getUpdateAt());
+        transaction.setTransaction(new_transaction.getConcept(),new_transaction.getAmount(),new_transaction.getUser(), LocalDate.now());
         return  this.transactionRepository.save(transaction);
     }
 
@@ -51,7 +51,7 @@ public class TransactionService {
                () -> new Exception("Empresa no existe ")
        );
         transaction.setEnterprise(enterprise);
-
+        transaction.setCreateAt(LocalDate.now());
         User user =  this.userRepository.findById(transaction.getUser().getId()).orElseThrow(
                 () -> new Exception("Usuario no existe ")
         );
