@@ -80,7 +80,7 @@
               <th scope="row" th:text="${user.id}"></th>
               <td th:text="${user?.name} ?: 'Sin nombre'"></td>
               <td th:text="${user.email}"></td>
-              <td th:text="${user?.role}"></td>
+              <td th:text="${user?.role} ?: 'Sin rol'"></td>
 <!--              <td th:text="${user.enterprise?.name}"></td>-->
               <td th:text="${user.enterprise?.name} ?: 'Sin empresa'"></td>
 

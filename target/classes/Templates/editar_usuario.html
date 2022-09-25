@@ -61,7 +61,7 @@
 
           <div class="mb-3">
             <label for="nombreUsuario" class="form-label">Nombre del usuario</label>
-            <input th:field="${user.name}" type="text" class="form-control" id="nombreUsuario" >
+            <input required th:field="${user.name}" type="text" class="form-control" id="nombreUsuario" >
 
           </div>
 
@@ -80,8 +80,8 @@
           <div class="mb-3">
             <label for="roleUsuario" class="form-label">Seleccionar role </label>
             <select th:field="*{role}" id="roleUsuario" class="form-select" aria-label="Default select example">
-              <option  th:value="'Admin'" th:text="Admin"></option>
               <option th:selected th:value="'Operario'" th:text="Operario"></option>
+              <option  th:value="'Admin'" th:text="Admin"></option>
             </select>
           </div>
 
