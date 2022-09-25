@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -13,7 +14,7 @@
 <body>
 
 <main style="height: 100vh">
-
+    <div sec:authorize="isAuthenticated()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a href="/" class="navbar-brand">
@@ -70,6 +71,12 @@
                     </div>
                 </div>
             </div>
+    </div>
+    <div class="container text-center my-5" sec:authorize="!isAuthenticated()">
+        <img src="/img/3d-fluency-close-window.png" alt="Imagen robot"/>
+        <h4>No estas autenticado!</h4>
+        <a th:href="@{/oauth2/authorization/auth0}" class="btn btn-primary btn-lg px-3">Ingresar</a>
+    </div>
 
 
 </main>
