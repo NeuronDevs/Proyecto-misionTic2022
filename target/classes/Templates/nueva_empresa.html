@@ -59,22 +59,22 @@
 
                     <div class="mb-3">
                         <label for="nombreEmpresa" class="form-label">Nombre de la empresa</label>
-                        <input th:field="*{name}" type="text" class="form-control" id="nombreEmpresa" >
+                        <input required th:field="*{name}" type="text" class="form-control" id="nombreEmpresa" >
                     </div>
 
                     <div class="mb-3">
-                        <label for="documentoEmpresa" class="form-label">Documento</label>
-                        <input th:field="*{document}" type="text" class="form-control" id="documentoEmpresa" >
+                        <label for="documentoEmpresa" class="form-label">NIT</label>
+                        <input required th:field="*{document}" type="text" class="form-control" id="documentoEmpresa" >
                     </div>
 
                     <div class="mb-3">
                         <label for="numeroEmpresa" class="form-label">Teléfono</label>
-                        <input th:field="*{phone}" type="text" class="form-control" id="numeroEmpresa" >
+                        <input required th:field="*{phone}" type="text" class="form-control" id="numeroEmpresa" >
                     </div>
 
                     <div class="mb-3">
                         <label for="direccionEmpresa" class="form-label">Dirección</label>
-                        <input th:field="*{address}" type="text" class="form-control" id="direccionEmpresa" >
+                        <input required th:field="*{address}" type="text" class="form-control" id="direccionEmpresa" >
                     </div>
 
                     <div class="d-flex justify-content-evenly text-center">

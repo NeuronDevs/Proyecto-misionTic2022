@@ -13,7 +13,6 @@
 <main>
   <div sec:authorize="isAuthenticated()">
     <div th:switch="${usuario.role?.name()}">
-
       <div th:case="'Admin'">
 
         <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-success shadow-sm rounded-bottom">
@@ -106,9 +105,10 @@
     </div>
       <div class="container text-center my-5" th:case="*">
         <img src="/img/business-3d-robot-assistant-sleeping.png" alt="Imagen robot"/>
-        <h4>No tiene acceso, Espere que un administrador le asigne un Rol!!</h4>
+        <h4>No tiene acceso, Solo administradores!!</h4>
         <a th:href="@{/inicio}" class="btn btn-primary btn-lg px-3">Regresar</a>
       </div>
+
   </div>
       </div>
   </div>

@@ -43,6 +43,7 @@ public class UserService {
         );
         new_user.setCreatedAt(user.getCreatedAt());
         new_user.setProfile(user.getProfile());
+        new_user.setImage(user.getImage());
         LocalDate now = LocalDate.now();
         new_user.getProfile().setUpdateAt(now);
         return  this.userRepository.save(new_user);
