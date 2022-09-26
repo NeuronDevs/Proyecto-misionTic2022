@@ -12,7 +12,9 @@
 <body>
 <main>
   <div sec:authorize="isAuthenticated()">
-    <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-success shadow-sm rounded-bottom">
+    <div th:switch="${usuario.role?.name()}">
+      <div th:case="'Admin'">
+        <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-success shadow-sm rounded-bottom">
       <div class="container-fluid px-5">
         <a href="/" class="navbar-brand">
           <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
@@ -45,7 +47,7 @@
         </div>
       </div>
     </nav>
-    <div class="container my-3 d-flex flex-column align-items-center text-center table-responsive">
+        <div class="container my-3 d-flex flex-column align-items-center text-center table-responsive">
       <form th:action="@{/transactions/} + ${id} + @{/movements/new}" th:method="post" th:object="${transaction}" id="fTrans" onsubmit="fTrans.amount.value=Math.abs(fTrans.amount.value)*fTrans.type_transaction.value;return true;">
         <h2>Nueva Transacción</h2>
         <ul><i class="fa-solid fa-money-from-bracket"></i></ul>
@@ -55,7 +57,7 @@
         </div>
         <div class="mb-3">
           <label for="concepto" class="form-label">Concepto</label>
-          <input th:field="*{concept}" type="text" class="form-control" placeholder="Concepto" id="concepto"/>
+          <input required th:field="*{concept}" type="text" class="form-control" placeholder="Concepto" id="concepto" />
         </div>
         <div class="mb-3">
           <script language="javascript">
@@ -69,13 +71,20 @@
 
         <div class="mb-3">
           <label for="amount" class="form-label">Cantidad</label>
-          <input th:field="*{amount}" type="text" class="form-control" placeholder="cantidad" id="amount"/>
+          <input required th:field="*{amount}" type="number" min="1" class="form-control" placeholder="cantidad" id="amount"/>
         </div>
         <input th:field="*{enterprise.id}" type="hidden" />
         <input th:field="*{enterprise.name}" type="hidden" />
         <button class="btn btn-primary" type="submit">Guardar Transacci&oacute;n</button>
       </form>
 
+    </div>
+      </div>
+      <div class="container text-center my-5" th:case="*">
+        <img src="/img/business-3d-robot-assistant-sleeping.png" alt="Imagen robot"/>
+        <h4>No tiene acceso, Solicite al administrador la asignación de una empresa y rol</h4>
+        <a th:href="@{/inicio}" class="btn btn-primary btn-lg px-3">Regresar</a>
+      </div>
     </div>
   </div>
   <div class="container text-center my-5" sec:authorize="!isAuthenticated()">

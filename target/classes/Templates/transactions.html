@@ -12,7 +12,7 @@
 <body>
 <main>
   <div sec:authorize="isAuthenticated()">
-    <div th:switch="${usuario.enterprise}">
+    <div th:switch="${usuario.role?.name()}">
       <div class="container text-center my-5" th:case="null">
         <img src="/img/business-3d-robot-assistant-sleeping.png" alt="Imagen robot"/>
         <h4>No tiene acceso, Solicite al administrador la asignación de una empresa y rol</h4>
