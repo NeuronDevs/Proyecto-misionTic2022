@@ -24,7 +24,7 @@
                 <div sec:authorize="isAuthenticated()">
                     <div class="d-flex justify-content-center">
                         <h3 th:text="'Bienvenid@, ' + ' '"> </h3>
-                        <h3 th:text=" ${usuario?.name} ?: 'Usuario' "> </h3>
+                        <h3 th:text="${usuario?.name} ?: 'Usuario' "> </h3>
                     </div>
 
                     <a th:href="@{/inicio}" class="btn btn-primary btn-lg px-3">Llevame a la aplicacion</a>
