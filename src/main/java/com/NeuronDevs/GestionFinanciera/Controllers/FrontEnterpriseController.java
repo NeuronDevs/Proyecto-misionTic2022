@@ -32,7 +32,7 @@ public class FrontEnterpriseController {
             User usuario = this.userService.getOrCreateUser(principal.getClaims());
             model.addAttribute("usuario",usuario);
         }
-        return "Empresas";
+        return "empresas";
     }
 
     //Para crear una empresa - con model es como se comunica el controlador con thymeleaf

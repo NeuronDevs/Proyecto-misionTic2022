@@ -28,7 +28,7 @@ public class EnterpriseController {
    }
 
     //Para obtener una sola empresa
-    @GetMapping("/{id}")
+            @GetMapping("/{id}")
     public Optional<Enterprise> getEnterprise(@PathVariable Long id) throws Exception{
         return this.enterpriseService.getEnterprise(id);
     }
