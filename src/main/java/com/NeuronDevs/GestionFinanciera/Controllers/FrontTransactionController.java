@@ -87,10 +87,14 @@ public class FrontTransactionController {
     @GetMapping("/gestionar/transacciones/empresa/{id_e}/actualizar/{id_t}")
     public String updateTransaction(Model model, @PathVariable Long id_e, @PathVariable Long id_t  , @AuthenticationPrincipal OidcUser principal) throws Exception {
         if(principal!=null) {
-            Transaction transaction = this.transactionService.getTransaction(id_e, id_t).get();
-            transaction.setEnterprise(this.enterpriseService.getEnterprise(id_e).get());
-            model.addAttribute("usuario",this.userService.getOrCreateUser(principal.getClaims()));
-            model.addAttribute("transaction", transaction);
+            try {
+                Transaction transaction = this.transactionService.getTransaction(id_e, id_t).get();
+                transaction.setEnterprise(this.enterpriseService.getEnterprise(id_e).get());
+                model.addAttribute("usuario", this.userService.getOrCreateUser(principal.getClaims()));
+                model.addAttribute("transaction", transaction);
+            }catch(Exception e){
+                return "inicio";
+            }
         }
         return "update-transaction";
     }
