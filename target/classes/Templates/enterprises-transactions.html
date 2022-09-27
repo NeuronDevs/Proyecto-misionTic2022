@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/982f3bb3ad.js" crossorigin="anonymous"></script>
-  <title>Seleccionar empresa</title>
+  <title>Transacciones de empresas</title>
 </head>
 <body>
 <main>
@@ -19,7 +19,7 @@
         <a th:href="@{/inicio}" class="btn btn-primary btn-lg px-3">Regresar</a>
       </div>
       <div th:case="*">
-        <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-success shadow-sm rounded-bottom">
+        <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-primary shadow-sm rounded-bottom">
           <div class="container-fluid px-5">
             <a href="/" class="navbar-brand">
               <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
@@ -30,12 +30,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <div class="navbar-nav">
-                <a href="/inicio" class="nav-item nav-link active"> <i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="/inicio" class="nav-item nav-link"> <i class="fa-solid fa-house"></i> Inicio</a>
                 <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
                 <a href="/gestionar/usuarios" class="nav-item nav-link"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
-                <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"> </i>Transacciones</a>
+                <a href="/gestionar/transacciones/empresas" class="nav-item nav-link active"> <i class="fa-solid fa-money-bill-transfer"> </i>Transacciones</a>
               </div>
-
+              <li  class="nav-link text-lowercase ms-auto text-light" th:text="${usuario?.email} ?: 'usuario@email.com' "></li>
               <ul class="px-5 navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
                 <li class="nav-item nav-link dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
