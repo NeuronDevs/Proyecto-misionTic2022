@@ -76,9 +76,9 @@
 						<configuration>
 							<additionalProperties>
 								<encoding.source>${project.build.sourceEncoding}</encoding.source>
-								<encoding.source>${project.reporting.outputEncoding}</encoding.source>
-								<encoding.source>${maven.compiler.source}</encoding.source>
-								<encoding.source>${maven.compiler.target}</encoding.source>
+								<encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
+								<java.source>${project.reporting.outputEncoding}</java.source>
+								<java.target>${maven.compiler.source}</java.target>
 							</additionalProperties>
 						</configuration>
 					</execution>
