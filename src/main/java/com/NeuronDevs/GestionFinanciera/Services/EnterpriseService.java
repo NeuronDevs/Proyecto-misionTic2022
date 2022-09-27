@@ -1,6 +1,7 @@
 package com.NeuronDevs.GestionFinanciera.Services;
 
 import com.NeuronDevs.GestionFinanciera.Entities.Enterprise;
+import com.NeuronDevs.GestionFinanciera.Entities.Profile;
 import com.NeuronDevs.GestionFinanciera.Entities.User;
 import com.NeuronDevs.GestionFinanciera.Repositories.EnterpriseRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class EnterpriseService {
     public Enterprise newEnterprise(Enterprise enterprise){
         return this.enterpriseRepository.save(enterprise);
     }
+
 
     public List<Enterprise> consultarEnterprise(){
         return this.enterpriseRepository.findAll();

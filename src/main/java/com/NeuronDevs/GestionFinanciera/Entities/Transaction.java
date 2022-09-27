@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -25,15 +26,15 @@ public class Transaction {
     @JsonIgnore
     private Enterprise enterprise;
     @Column
-    private Date createAt;
+    private LocalDate createAt;
     @Column
-    private Date updateAt;
+    private LocalDate updateAt;
 
     public Transaction() {
 
     }
 
-    public void setTransaction(String concept, float amount, User user,  Date updateAt) {
+    public void setTransaction(String concept, float amount, User user,  LocalDate updateAt) {
         this.concept = concept;
         this.amount = amount;
         this.user = user;

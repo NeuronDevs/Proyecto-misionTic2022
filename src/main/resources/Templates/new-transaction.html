@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/982f3bb3ad.js" crossorigin="anonymous"></script>
+  <title>Seleccionar empresa</title>
+</head>
+<body>
+<main>
+  <div sec:authorize="isAuthenticated()">
+    <div th:switch="${usuario.role?.name()}">
+      <div th:case="'Admin'">
+        <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-success shadow-sm rounded-bottom">
+      <div class="container-fluid px-5">
+        <a href="/" class="navbar-brand">
+          <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
+        </a>
+
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav">
+            <a href="/inicio" class="nav-item nav-link active"> <i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="/gestionar/empresas" class="nav-item nav-link"> <i class="fa-solid fa-hotel"></i> Empresas</a>
+            <a href="/gestionar/usuarios" class="nav-item nav-link"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
+            <a href="/gestionar/transacciones/empresas" class="nav-item nav-link"> <i class="fa-solid fa-money-bill-transfer"> </i>Transacciones</a>
+          </div>
+
+          <ul class="px-5 navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+            <li class="nav-item nav-link dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img height="50px"  th:src="${usuario?.image} ?: 'https://illumesense.com/resources/illumesense/style/img/website/profile-picture-blanks/male-profile.jpg' " alt="profile img">
+              </a>
+              <ul p-2 class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="nav-item nav-link text-dark" th:text="${usuario?.name} ?: 'Usuario' "></li>
+                <li class="nav-item nav-link text-dark" th:text="${usuario?.role?.name()} ?: 'Sin rol' "></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>  <a  th:href="@{/logout}" class="nav-item nav-link text-dark"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+        <div class="container my-3 d-flex flex-column align-items-center text-center table-responsive">
+      <form th:action="@{/transactions/} + ${id} + @{/movements/new}" th:method="post" th:object="${transaction}" id="fTrans" onsubmit="fTrans.amount.value=Math.abs(fTrans.amount.value)*fTrans.type_transaction.value;return true;">
+        <h2>Nueva Transacción</h2>
+        <ul><i class="fa-solid fa-money-from-bracket"></i></ul>
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Empresa</label>
+          <input readonly th:value="${transaction.enterprise.name}" type="text" class="form-control" id="empresa"/>
+        </div>
+        <div class="mb-3">
+          <label for="concepto" class="form-label">Concepto</label>
+          <input required th:field="*{concept}" type="text" class="form-control" placeholder="Concepto" id="concepto" />
+        </div>
+        <div class="mb-3">
+          <script language="javascript">
+              getElementbyId("ingreso")*getElementById("
+          </script>
+          <label for="ingreso" class="form-label">Ingreso</label>
+          <input  type="radio" name="type_transaction" value="1" id="ingreso" checked />
+          <label for="egreso" class="form-label">Egreso</label>
+          <input  type="radio" name="type_transaction" value="-1" id="egreso" />
+        </div>
+
+        <div class="mb-3">
+          <label for="amount" class="form-label">Cantidad</label>
+          <input required th:field="*{amount}" type="number" min="1" class="form-control" placeholder="cantidad" id="amount"/>
+        </div>
+        <input th:field="*{enterprise.id}" type="hidden" />
+        <input th:field="*{enterprise.name}" type="hidden" />
+        <button class="btn btn-primary" type="submit">Guardar Transacci&oacute;n</button>
+      </form>
+
+    </div>
+      </div>
+      <div class="container text-center my-5" th:case="*">
+        <img src="/img/business-3d-robot-assistant-sleeping.png" alt="Imagen robot"/>
+        <h4>No tiene acceso, Solicite al administrador la asignación de una empresa y rol</h4>
+        <a th:href="@{/inicio}" class="btn btn-primary btn-lg px-3">Regresar</a>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center my-5" sec:authorize="!isAuthenticated()">
+    <img src="/img/3d-fluency-close-window.png" alt="Imagen robot"/>
+    <h4>No estas autenticado!</h4>
+    <a th:href="@{/oauth2/authorization/auth0}" class="btn btn-primary btn-lg px-3">Ingresar</a>
+  </div>
+
+</main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>

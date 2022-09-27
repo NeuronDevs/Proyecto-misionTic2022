@@ -2,8 +2,11 @@ package com.NeuronDevs.GestionFinanciera.Controllers;
 
 import com.NeuronDevs.GestionFinanciera.Entities.*;
 import com.NeuronDevs.GestionFinanciera.Services.UserService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,9 +31,11 @@ public class UserController {
     }
 
 
-    @PostMapping("/enterprise/{id_e}")
-    public User newUser(@RequestBody User user,@PathVariable Long id_e) throws Exception {
-        return this.userService.newUser(user, id_e);
+    @PostMapping("")
+    public RedirectView newUser2(@ModelAttribute User user, Model model) throws Exception {
+        model.addAttribute(user);
+        this.userService.newUser2(user);
+        return new RedirectView("/gestionar/usuarios");
     }
 
     @GetMapping("/{id}")
@@ -38,13 +43,21 @@ public class UserController {
         return this.userService.getUser(id);
     }
 
-    @PatchMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) throws Exception {
+    @PatchMapping("")
+    public RedirectView updateUser(@ModelAttribute User user, Model model) throws Exception {
+        model.addAttribute(user);
+        this.userService.updateUser(user, user.getId());
+        return new RedirectView("/gestionar/usuarios");
+    }
+
+    @PatchMapping("update/{id}")
+    public User updateUser2(@PathVariable Long id, @RequestBody User user) throws Exception {
         return this.userService.updateUser(user,id);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable Long id) throws Exception {
-        return this.userService.DeleteUser(id);
+    public RedirectView deleteUser(@PathVariable Long id) throws Exception {
+        this.userService.DeleteUser(id);
+        return new RedirectView("/gestionar/usuarios");
     }
 }
