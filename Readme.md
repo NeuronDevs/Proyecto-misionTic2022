@@ -1,5 +1,9 @@
 # Proyecto MisionTic2022 - Ciclo3 
 
+## Aplicacion web 🚀
+```
+https://neurondevs.herokuapp.com
+```
 
 <b> Equipo</b> _Des. Software Grupo 9_
 
@@ -12,7 +16,7 @@ _El procedimiento de registro de gastos y ventas es un proceso que puede ser ted
 
 _Adicionalmente, debido a que las transacciones contables son supremamente delicadas, el sistema debería permitir llevar una trazabilidad de quién registró cada transacción, por lo cual el sistema debe contar con un sistema de autenticación._
 
-## Comenzando 🚀
+## Comenzando 🌄
 ```
 Git clone https://github.com/NeuronDevs/Proyecto-misionTic2022.git
 ```

@@ -19,7 +19,9 @@
         <a th:href="@{/inicio}" class="btn btn-primary btn-lg px-3">Regresar</a>
       </div>
       <div th:case="*">
+
         <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-primary shadow-sm rounded-bottom">
+
           <div class="container-fluid px-5">
             <a href="/" class="navbar-brand">
               <img src="https://png.monster/wp-content/uploads/2022/05/png.monster-119.png" height="28" alt="neuron"> Neuron Devs
@@ -35,7 +37,9 @@
                 <a href="/gestionar/usuarios" class="nav-item nav-link"> <i class="fa-solid fa-users-gear"></i> Usuarios</a>
                 <a href="/gestionar/transacciones/empresas" class="nav-item nav-link active"> <i class="fa-solid fa-money-bill-transfer"> </i>Transacciones</a>
               </div>
+
               <li  class="nav-link text-lowercase ms-auto text-light" th:text="${usuario?.email} ?: 'usuario@email.com' "></li>
+
               <ul class="px-5 navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
                 <li class="nav-item nav-link dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
