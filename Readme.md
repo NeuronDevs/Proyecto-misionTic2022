@@ -4,6 +4,9 @@
 ```
 https://neurondevs.herokuapp.com
 ```
+En la aplicacion puedes registrarte sin embargo ingresaras como un usuario al cual no se le ha asignado un rol y empresa, por eso puedes ingresar con los siguientes usuarios:
+- Administrador -> Correo: adminuser@gmail.com | Contraseña: Adminuser2022
+- Operario -> Correo: operariouser@gmail.com | Contraseña: Operariouser2022
 
 <b> Equipo</b> _Des. Software Grupo 9_
 
