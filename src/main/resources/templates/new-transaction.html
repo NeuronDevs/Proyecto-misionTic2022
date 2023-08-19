@@ -13,7 +13,7 @@
 <main>
   <div sec:authorize="isAuthenticated()">
     <div th:switch="${usuario.role?.name()}">
-      <div th:case="'Admin'">
+      <div th:case="*">
 
         <nav class="p-3 navbar navbar-expand-lg  navbar-dark bg-primary shadow-sm rounded-bottom">
 
